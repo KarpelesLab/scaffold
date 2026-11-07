@@ -12819,7 +12819,7 @@
 				)
 			)
 		)
-		(property "Value" "VBus"
+		(property "Value" "VBUS_SENSE"
 			(at 33.02 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14382,7 +14382,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor 0603 - 4.75KOhm - 1/10W - 1%"
+		(property "Description" "Resistor 0603 - 1KOhm - 1/10W - 1%"
 			(at 30.48 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -14393,7 +14393,7 @@
 				)
 			)
 		)
-		(property "ALTIUM_VALUE" "4.75 KOhm"
+		(property "ALTIUM_VALUE" "1 KOhm"
 			(at 32.258 158.242 90)
 			(hide yes)
 			(show_name no)
@@ -14441,7 +14441,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "MANUFACTURER PN" "CRCW06034K75FKEA"
+		(property "MANUFACTURER PN" "0603WAF1001T5E"
 			(at 32.258 158.242 90)
 			(hide yes)
 			(show_name no)
@@ -14453,7 +14453,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "MANUFACTURER" "Vishay"
+		(property "MANUFACTURER" "UNI-ROYAL"
 			(at 32.258 158.242 90)
 			(hide yes)
 			(show_name no)
