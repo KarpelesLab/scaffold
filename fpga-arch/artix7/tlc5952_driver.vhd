@@ -30,6 +30,9 @@
 --   /SRCLR of all 74HC595 tied high.
 -- Bits are shifted MSB first: leds(23) ends on QH of the last register
 -- (U402), leds(0) on QA of the first register (U400).
+-- The LEDs are wired between 3V3 and the 74HC595 outputs (through series
+-- resistors), so they are lit when the output is low: the bits are inverted
+-- before being shifted.
 --
 -- Brightness: the TLC5952 had a constant-current brightness control. Here
 -- control(6 downto 0) (the same value is repeated three times by
@@ -105,7 +108,7 @@ begin
     begin
         if reset_n = '0' then
             state <= st_idle;
-            -- Differs from any valid request to force an update at startup.
+            -- Forces an update at startup (default request is all off).
             current_leds <= (others => '1');
             shift <= (others => '0');
             bit_counter <= 23;
@@ -118,7 +121,8 @@ begin
                     end if;
                 when st_start =>
                     current_leds <= leds;
-                    shift <= leds;
+                    -- Active-low outputs.
+                    shift <= not leds;
                     state <= st_sync;
                 when st_sync =>
                     if tick = '1' then

@@ -13,7 +13,9 @@ architecture sim of tb_leds is
     signal leds, control: std_logic_vector(23 downto 0) := (others => '0');
     signal sin, sclk, lat, blank: std_logic;
     -- 74HC595 chain model: sr(0) is QA of U400, sr(23) is QH of U402.
-    signal sr, outputs: std_logic_vector(23 downto 0) := (others => 'U');
+    -- Outputs are active low (LED lit when the output is '0'), lit is the
+    -- resulting LED state.
+    signal sr, outputs, lit: std_logic_vector(23 downto 0) := (others => 'U');
     signal done: boolean := false;
 begin
     clock <= not clock after 5 ns when not done;
@@ -26,6 +28,7 @@ begin
 
     sr <= sr(22 downto 0) & sin when rising_edge(sclk);
     outputs <= sr when rising_edge(lat);
+    lit <= not outputs;
 
     process
         variable on_count: natural;
@@ -49,11 +52,11 @@ begin
         wait for 20 ns; reset_n <= '1';
         -- Startup update to all off.
         wait_update;
-        assert outputs = x"000000" report "startup" severity failure;
+        assert lit = x"000000" report "startup" severity failure;
         leds <= x"A5C301"; wait_update;
-        assert outputs = x"A5C301" report "pattern 1" severity failure;
+        assert lit = x"A5C301" report "pattern 1" severity failure;
         leds <= x"800001"; wait_update;
-        assert outputs = x"800001" report "pattern 2 (bit order)" severity failure;
+        assert lit = x"800001" report "pattern 2 (bit order)" severity failure;
         check_pwm(0); check_pwm(63); check_pwm(127);
         report "PASS" severity note;
         done <= true; wait;
