@@ -4334,7 +4334,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 48.72 127 0)
 			(effects
 				(font
@@ -4343,7 +4343,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 45.72 127 0)
 			(hide yes)
 			(effects
@@ -4363,7 +4363,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 45.72 127 0)
 			(hide yes)
 			(effects
@@ -4373,7 +4373,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 45.72 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 45.72 127 0)
 			(hide yes)
 			(effects
@@ -4486,7 +4496,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 102.06 127 0)
 			(effects
 				(font
@@ -4495,7 +4505,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 99.06 127 0)
 			(hide yes)
 			(effects
@@ -4515,7 +4525,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 99.06 127 0)
 			(hide yes)
 			(effects
@@ -4525,7 +4535,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 99.06 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 99.06 127 0)
 			(hide yes)
 			(effects
@@ -4638,7 +4658,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 155.4 127 0)
 			(effects
 				(font
@@ -4647,7 +4667,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 152.4 127 0)
 			(hide yes)
 			(effects
@@ -4667,7 +4687,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 152.4 127 0)
 			(hide yes)
 			(effects
@@ -4677,7 +4697,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 152.4 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 152.4 127 0)
 			(hide yes)
 			(effects
@@ -4790,7 +4820,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 208.74 127 0)
 			(effects
 				(font
@@ -4799,7 +4829,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 205.74 127 0)
 			(hide yes)
 			(effects
@@ -4819,7 +4849,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 205.74 127 0)
 			(hide yes)
 			(effects
@@ -4829,7 +4859,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 205.74 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 205.74 127 0)
 			(hide yes)
 			(effects
@@ -4942,7 +4982,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 262.08 127 0)
 			(effects
 				(font
@@ -4951,7 +4991,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 259.08 127 0)
 			(hide yes)
 			(effects
@@ -4971,7 +5011,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 259.08 127 0)
 			(hide yes)
 			(effects
@@ -4981,7 +5021,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 259.08 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 259.08 127 0)
 			(hide yes)
 			(effects
@@ -5094,7 +5144,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 315.42 127 0)
 			(effects
 				(font
@@ -5103,7 +5153,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 312.42 127 0)
 			(hide yes)
 			(effects
@@ -5123,7 +5173,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 312.42 127 0)
 			(hide yes)
 			(effects
@@ -5133,7 +5183,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 312.42 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 312.42 127 0)
 			(hide yes)
 			(effects
@@ -5246,7 +5306,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 368.76 127 0)
 			(effects
 				(font
@@ -5255,7 +5315,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 365.76 127 0)
 			(hide yes)
 			(effects
@@ -5275,7 +5335,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 365.76 127 0)
 			(hide yes)
 			(effects
@@ -5285,7 +5345,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 365.76 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 365.76 127 0)
 			(hide yes)
 			(effects
@@ -5398,7 +5468,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 422.1 127 0)
 			(effects
 				(font
@@ -5407,7 +5477,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 419.1 127 0)
 			(hide yes)
 			(effects
@@ -5427,7 +5497,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 419.1 127 0)
 			(hide yes)
 			(effects
@@ -5437,7 +5507,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 419.1 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 419.1 127 0)
 			(hide yes)
 			(effects
@@ -5550,7 +5630,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 475.44 127 0)
 			(effects
 				(font
@@ -5559,7 +5639,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 472.44 127 0)
 			(hide yes)
 			(effects
@@ -5579,7 +5659,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 472.44 127 0)
 			(hide yes)
 			(effects
@@ -5589,7 +5669,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 472.44 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 472.44 127 0)
 			(hide yes)
 			(effects
@@ -5702,7 +5792,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 48.72 154.94 0)
 			(effects
 				(font
@@ -5711,7 +5801,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 45.72 154.94 0)
 			(hide yes)
 			(effects
@@ -5731,7 +5821,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 45.72 154.94 0)
 			(hide yes)
 			(effects
@@ -5741,7 +5831,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 45.72 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 45.72 154.94 0)
 			(hide yes)
 			(effects
@@ -5854,7 +5954,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 102.06 154.94 0)
 			(effects
 				(font
@@ -5863,7 +5963,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 99.06 154.94 0)
 			(hide yes)
 			(effects
@@ -5883,7 +5983,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 99.06 154.94 0)
 			(hide yes)
 			(effects
@@ -5893,7 +5993,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 99.06 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 99.06 154.94 0)
 			(hide yes)
 			(effects
@@ -6006,7 +6116,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 155.4 154.94 0)
 			(effects
 				(font
@@ -6015,7 +6125,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 152.4 154.94 0)
 			(hide yes)
 			(effects
@@ -6035,7 +6145,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 152.4 154.94 0)
 			(hide yes)
 			(effects
@@ -6045,7 +6155,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 152.4 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 152.4 154.94 0)
 			(hide yes)
 			(effects
@@ -6158,7 +6278,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 208.74 154.94 0)
 			(effects
 				(font
@@ -6167,7 +6287,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 205.74 154.94 0)
 			(hide yes)
 			(effects
@@ -6187,7 +6307,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 205.74 154.94 0)
 			(hide yes)
 			(effects
@@ -6197,7 +6317,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 205.74 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 205.74 154.94 0)
 			(hide yes)
 			(effects
@@ -6310,7 +6440,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 262.08 154.94 0)
 			(effects
 				(font
@@ -6319,7 +6449,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 259.08 154.94 0)
 			(hide yes)
 			(effects
@@ -6339,7 +6469,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 259.08 154.94 0)
 			(hide yes)
 			(effects
@@ -6349,7 +6479,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 259.08 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 259.08 154.94 0)
 			(hide yes)
 			(effects
@@ -6462,7 +6602,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 315.42 154.94 0)
 			(effects
 				(font
@@ -6471,7 +6611,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 312.42 154.94 0)
 			(hide yes)
 			(effects
@@ -6491,7 +6631,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 312.42 154.94 0)
 			(hide yes)
 			(effects
@@ -6501,7 +6641,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 312.42 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 312.42 154.94 0)
 			(hide yes)
 			(effects
@@ -6614,7 +6764,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 368.76 154.94 0)
 			(effects
 				(font
@@ -6623,7 +6773,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 365.76 154.94 0)
 			(hide yes)
 			(effects
@@ -6643,7 +6793,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 365.76 154.94 0)
 			(hide yes)
 			(effects
@@ -6653,7 +6803,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 365.76 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 365.76 154.94 0)
 			(hide yes)
 			(effects
@@ -6766,7 +6926,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 422.1 154.94 0)
 			(effects
 				(font
@@ -6775,7 +6935,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 419.1 154.94 0)
 			(hide yes)
 			(effects
@@ -6795,7 +6955,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 419.1 154.94 0)
 			(hide yes)
 			(effects
@@ -6805,7 +6965,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 419.1 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 419.1 154.94 0)
 			(hide yes)
 			(effects
@@ -6918,7 +7088,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 475.44 154.94 0)
 			(effects
 				(font
@@ -6927,7 +7097,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 472.44 154.94 0)
 			(hide yes)
 			(effects
@@ -6947,7 +7117,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 472.44 154.94 0)
 			(hide yes)
 			(effects
@@ -6957,7 +7127,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 472.44 154.94 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 472.44 154.94 0)
 			(hide yes)
 			(effects
@@ -7070,7 +7250,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Red"
+		(property "Value" "KT-0603R"
 			(at 48.72 182.88 0)
 			(effects
 				(font
@@ -7079,7 +7259,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 45.72 182.88 0)
 			(hide yes)
 			(effects
@@ -7099,7 +7279,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 45.72 182.88 0)
 			(hide yes)
 			(effects
@@ -7109,7 +7289,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSECKT/J3"
+		(property "MANUFACTURER PN" "KT-0603R"
+			(at 45.72 182.88 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2286"
 			(at 45.72 182.88 0)
 			(hide yes)
 			(effects
@@ -7222,7 +7412,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LED Yellow"
+		(property "Value" "KT-0603Y"
 			(at 102.06 182.88 0)
 			(effects
 				(font
@@ -7231,7 +7421,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Scaffold-import-fps:KINGBRIGHT_AA3528"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 99.06 182.88 0)
 			(hide yes)
 			(effects
@@ -7251,7 +7441,7 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER" "Kingbright"
+		(property "MANUFACTURER" "Hubei KENTO"
 			(at 99.06 182.88 0)
 			(hide yes)
 			(effects
@@ -7261,7 +7451,17 @@
 				(justify left)
 			)
 		)
-		(property "MANUFACTURER PN" "AA3528LSYCKT/J3"
+		(property "MANUFACTURER PN" "KT-0603Y"
+			(at 99.06 182.88 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C2287"
 			(at 99.06 182.88 0)
 			(hide yes)
 			(effects
@@ -7414,6 +7614,16 @@
 			)
 		)
 		(property "MANUFACTURER PN" "150141RV73100"
+			(at 152.4 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C5872444"
 			(at 152.4 187.96 0)
 			(hide yes)
 			(effects
@@ -7642,6 +7852,16 @@
 			)
 		)
 		(property "MANUFACTURER PN" "150141RV73100"
+			(at 205.74 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "LCSC" "C5872444"
 			(at 205.74 187.96 0)
 			(hide yes)
 			(effects

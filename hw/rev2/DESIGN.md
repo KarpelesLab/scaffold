@@ -72,8 +72,8 @@ VIN (5-20 V)
   through the shunt amplifier.
 - VPRE = 6.0 V leaves 0.66 V headroom over the TL1963A 340 mV dropout at 1.5 A
   for a 5.0 V output. Worst-case LDO dissipation (1.2 V out, 1.5 A) is 7.2 W:
-  more than an SOT-223 can sink. The PTC fuses (F202, F203) are raised from
-  0.5 A to 1.5 A hold, and the potentiometer ranges keep the existing limits.
+  more than an SOT-223 can sink. The PTC fuses (F202, F203) on the external
+  platform/DUT supply inputs stay at 0.5 A as on Rev 1.1.
   **Open point:** add a thermal pad array or limit to 1 A at low output
   voltages; to be decided at layout.
 - Artix-7 sequencing per DS181: VCCINT → VCCAUX → VCCO. The 1V0 buck starts

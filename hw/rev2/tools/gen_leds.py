@@ -63,10 +63,17 @@ BICOLOUR = {"D400": (19, 18), "D401": (23, 22)}   # (pin 3 channel, pin 4 channe
 
 g = Grid(sheet, 25, g.bottom() + 30, 520, "LEDs (anodes on 3V3_FPGA, cathodes through resistors to the 74HC595)")
 rnum = 401
+# The Kingbright AA3528 LEDs of Rev 1.1 are out of stock at JLCPCB: 0603 LEDs
+# (pad 1 = cathode, as on the AA3528 footprint) are used instead.
 for ref, ch in sorted(SINGLE.items(), key=lambda x: x[1]):
-    base.place(g, ref, {"2": "3V3_FPGA", "1": "LED%d_K" % ch})
+    red = ref == "D415"
+    base.place(g, ref, {"2": "3V3_FPGA", "1": "LED%d_K" % ch},
+               value="KT-0603R" if red else "KT-0603Y", footprint="LED_SMD:LED_0603_1608Metric",
+               fields={"LCSC": "C2286" if red else "C2287",
+                       "MANUFACTURER PN": "KT-0603R" if red else "KT-0603Y", "MANUFACTURER": "Hubei KENTO"})
 for ref, (ch3, ch4) in BICOLOUR.items():
-    base.place(g, ref, {"1": "3V3_FPGA", "2": "3V3_FPGA", "3": "LED%d_K" % ch3, "4": "LED%d_K" % ch4})
+    base.place(g, ref, {"1": "3V3_FPGA", "2": "3V3_FPGA", "3": "LED%d_K" % ch3, "4": "LED%d_K" % ch4},
+               fields={"LCSC": "C5872444"})
 for ch in range(24):
     bic = ch in (18, 19, 22, 23)
     value, lcsc = ("330", "C23138") if bic else ("680", "C23228")

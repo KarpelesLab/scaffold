@@ -1,0 +1,39 @@
+mpn,lcsc,assembly,note
+RC0603FR-0710KL,C25804,jlc,10k 1% 0603 (JLC basic equivalent)
+RC0603FR-071KL,C21190,jlc,1k 1% 0603 (JLC basic equivalent)
+RC0603FR-07470RP,C23179,jlc,470R 1% 0603 (JLC basic equivalent)
+RC0603FR-1015KL,C22809,jlc,15k 1% 0603 (JLC basic equivalent)
+RC0603FR-0747KL,C25819,jlc,47k 1% 0603 (JLC basic equivalent)
+CRCW06030000FKEA,C21189,jlc,0R 0603 (JLC basic equivalent)
+CRCW06032R00FKEA,C22977,jlc,2R 1% 0603 (JLC basic equivalent)
+CRCW060350R0FKEA,C23185,jlc,49.9R 1% 0603 (standard value for the 50R SMA termination)
+CRCW0603100RFKEA,C22775,jlc,100R 1% 0603 (JLC basic equivalent)
+AC0603FR-0728KL,C22989,jlc,28k 1% 0603
+0603WAF1001T5E,C21190,jlc,1k 1% 0603
+885012206046,C14663,jlc,100nF 0603 (JLC basic 50V X7R)
+GRM188R61C106MA73D,C86277,jlc,10uF 16V X5R 0603 (same part)
+C0603C105K4RACTU,C15849,jlc,1uF 0603 (JLC basic 50V X5R)
+GRM188R61C475KE11,C19666,jlc,4.7uF 16V 0603 (JLC basic)
+SN74LVC1T45DBVR,C7843,jlc,same part
+FT232RL,C8690,jlc,FT232RL-REEL
+LDK130M33R,C2969807,jlc,same part
+ADA4895-1ARJZ-R,C654294,jlc,ADA4895-1ARJZ-R7 (low stock: check before ordering)
+BAT60J,C133103,jlc,BAT60JFILM
+ESDAXLC6-1BT2,C154523,jlc,same part
+STT6N3LLH6,C3021100,jlc,same part
+STR2P3LLH6,C3040112,jlc,same part
+150141RV73100,C5872444,jlc,bicolour LED (same part)
+AA3528LSYCKT/J3,C2287,jlc,out of stock at JLC: replaced by KT-0603Y (footprint changed to 0603)
+AA3528LSECKT/J3,C2286,jlc,out of stock at JLC: replaced by KT-0603R (footprint changed to 0603)
+0ZCK0050FF2E,C5220829,jlc,PTC 0.5A hold (same part)
+1825057-7,C266199,jlc,DIP switch (through-hole)
+3296W-1-503RLF,C83686,jlc,50k trimmer 3296W-1-503LF (through-hole)
+3296W-1-101LF,C83688,jlc,100R trimmer (through-hole)
+90120-0122,C3336192,jlc,2-pin header (through-hole)
+90120-0123,,hand,"3-pin 0.1in header, Molex 90120-0123 (40 pcs at JLC: hand-fit or any 1x3 0.1in header)"
+SMA–J–P–H–ST–EM3,,hand,"Samtec SMA-J-P-H-ST-EM3 edge SMA, not stocked by JLC (Mouser/DigiKey)"
+HTSS-110-01-G-D,,hand,"Samtec 2x10 shrouded header, keeps daughter board compatibility (Mouser/DigiKey)"
+691213710002,,hand,"Wurth 2-pole terminal block (Mouser/DigiKey)"
+430152080826,,hand,"Wurth tactile switch (Mouser/DigiKey)"
+25136NAH,,hand,"APEM slide switch 4A (Mouser/DigiKey)"
+6821-0-00-15-00-00-08-0,,hand,"Mill-Max test pin (Mouser/DigiKey)"
