@@ -67,6 +67,41 @@ def add_via(x, y, netname, d=VIA_D, drill=VIA_DRILL):
     return v
 
 
+# Vias added outside the BGA go through every layer: they must clear the pads
+# of both sides (current positions) and the other vias.
+def via_ok(x, y, d, netname, ignore_ref=None, clearance=0.2):
+    r = d / 2 + clearance
+    for fp in board.GetFootprints():
+        ref = fp.GetReference()
+        if ref == ignore_ref or ref == "U100":
+            continue
+        fb = fp.GetBoundingBox(False)
+        if not (pcbnew.ToMM(fb.GetLeft()) - 3 < x < pcbnew.ToMM(fb.GetRight()) + 3
+                and pcbnew.ToMM(fb.GetTop()) - 3 < y < pcbnew.ToMM(fb.GetBottom()) + 3):
+            continue
+        for p in fp.Pads():
+            if p.GetNetname() == netname:
+                continue
+            b = p.GetBoundingBox()
+            if pcbnew.ToMM(b.GetLeft()) - r < x < pcbnew.ToMM(b.GetRight()) + r and \
+                    pcbnew.ToMM(b.GetTop()) - r < y < pcbnew.ToMM(b.GetBottom()) + r:
+                return False
+    for t in board.GetTracks():
+        if t.GetClass() == "PCB_VIA" and t.GetNetname() != netname:
+            q = t.GetPosition()
+            if math.hypot(pcbnew.ToMM(q.x) - x, pcbnew.ToMM(q.y) - y) < d / 2 + pcbnew.ToMM(t.GetWidth(pcbnew.F_Cu)) / 2 + clearance:
+                return False
+    return True
+
+
+def free_via(candidates, d, netname, ignore_ref):
+    """First candidate (x, y) where a via of diameter d fits."""
+    for (x, y) in candidates:
+        if via_ok(x, y, d, netname, ignore_ref):
+            return x, y
+    raise RuntimeError("no room for a %s via near %s" % (netname, ignore_ref))
+
+
 def add_track(x0, y0, x1, y1, w, layer, netname):
     t = pcbnew.PCB_TRACK(board)
     t.SetStart(pcbnew.VECTOR2I(MM(x0), MM(y0)))
@@ -205,10 +240,17 @@ for n, sides in SIDES.items():
             ux, uy = (x / abs(x) if abs(x) > 9 else 0), (y / abs(y) if abs(y) > 9 else 0)
             px, py = CX + x - ux * 0.48, CY + y - uy * 0.48
             gx, gy = CX + x + ux * 0.48, CY + y + uy * 0.48
-            add_via(px - ux * 0.75, py - uy * 0.75, n)
-            add_track(px, py, px - ux * 0.75, py - uy * 0.75, 0.3, pcbnew.B_Cu, n)
-            add_via(gx + ux * 0.75, gy + uy * 0.75, "GND")
-            add_track(gx, gy, gx + ux * 0.75, gy + uy * 0.75, 0.3, pcbnew.B_Cu, "GND")
+            # Tangent direction, to slide a via sideways if the straight spot is taken.
+            tx, ty = (0, 1) if ux else (1, 0)
+            sx, sy = free_via([(px - ux * 0.75 + tx * k, py - uy * 0.75 + ty * k) for k in (0, 0.5, -0.5)],
+                              VIA_D, n, ref)
+            add_via(sx, sy, n)
+            add_track(px, py, sx, sy, 0.3, pcbnew.B_Cu, n)
+            hx, hy = free_via([(gx + ux * (0.75 + k), gy + uy * (0.75 + k)) for k in (0, 0.4, 0.8)]
+                              + [(gx + ux * 0.75 + tx * k, gy + uy * 0.75 + ty * k) for k in (0.6, -0.6)],
+                              VIA_D, "GND", ref)
+            add_via(hx, hy, "GND")
+            add_track(gx, gy, hx, hy, 0.3, pcbnew.B_Cu, "GND")
             ring += 1
 left = {n: v for n, v in small.items() if v}
 print("decoupling ring: %d, left over: %s" % (ring, left))
@@ -226,8 +268,11 @@ for n, refs in bulk.items():
             q = p.GetPosition()
             vx, vy = pcbnew.ToMM(q.x), pcbnew.ToMM(q.y)
             dx = 1.5 if vx > x else -1.5
-            add_via(vx + dx, vy, p.GetNetname(), 0.6, 0.3)
-            add_track(vx, vy, vx + dx, vy, 0.6, pcbnew.B_Cu, p.GetNetname())
+            dy = 1.5 if y > CY else -1.5
+            fx, fy = free_via([(vx + dx, vy), (vx, vy + dy), (vx + dx, vy + dy), (vx, vy - dy), (vx + 2 * dx, vy)],
+                              0.6, p.GetNetname(), ref)
+            add_via(fx, fy, p.GetNetname(), 0.6, 0.3)
+            add_track(vx, vy, fx, fy, 0.6, pcbnew.B_Cu, p.GetNetname())
 
 
 # --- 3. planes --------------------------------------------------------------------

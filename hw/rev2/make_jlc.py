@@ -71,6 +71,13 @@ def main():
 
     lmap = {r["mpn"]: r for r in csv.DictReader(open(LCSC_MAP))}
     board = pcbnew.LoadBoard(a.board)
+    # kicad-cli exports the zone fills saved in the file: refill on a copy
+    # next to the project (so that the project rules and libraries apply).
+    pcbnew.ZONE_FILLER(board).Fill(board.Zones())
+    filled = os.path.join(os.path.dirname(os.path.abspath(a.board)), ".jlc-export.kicad_pcb")
+    pcbnew.SaveBoard(filled, board)
+    shutil.copy(os.path.splitext(a.board)[0] + ".kicad_pro", os.path.splitext(filled)[0] + ".kicad_pro")
+    a.board = filled
 
     bom = collections.OrderedDict()
     cpl, hand, missing = [], collections.defaultdict(list), []
@@ -145,6 +152,11 @@ def main():
         f.write("\nDRC (errors only):\n" + "".join(drc_summary))
         f.write("\nCheck the part rotations in JLCPCB's placement preview before confirming the order.\n")
     print(open(os.path.join(out, "report.txt")).read())
+    for ext in (".kicad_pcb", ".kicad_pro", ".kicad_prl"):
+        try:
+            os.remove(os.path.splitext(a.board)[0] + ext)
+        except OSError:
+            pass
 
 
 if __name__ == "__main__":

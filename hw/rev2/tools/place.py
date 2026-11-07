@@ -61,7 +61,10 @@ to_place = set()        # references that this script must place
 def obstacles(side_bottom):
     """Courtyards that block a part on the given side."""
     obs = []
-    for ref, fp in fps.items():
+    # Iterate over all footprints, not the reference dict: the mounting holes
+    # all have an empty reference.
+    for fp in board.GetFootprints():
+        ref = fp.GetReference()
         if ref in to_place and ref not in placed:
             continue
         if pcbnew.ToMM(fp.GetPosition().x) > pcbnew.ToMM(edge.GetRight()):
@@ -143,6 +146,14 @@ if "Logo1" in fps:
     p = fps["Logo1"].GetPosition()
     fps["Logo1"].SetPosition(pcbnew.VECTOR2I(p.x + MM(100), p.y - MM(4)))
 print("removed %d silkscreen shapes from the logo area" % removed)
+# Labels of Rev 1.1 that no longer match the hardware.
+for d in list(board.GetDrawings()):
+    if d.GetClass() == "PCB_TEXT" and d.GetText() == "5V-SEL":
+        board.Delete(d)            # source select jumper removed (TPS2121 mux)
+    elif d.GetClass() == "PCB_TEXT" and d.GetText() == "5V" and abs(pcbnew.ToMM(d.GetPosition().x) - 92) < 3:
+        d.SetText("7-20V")         # external input terminal CN202
+    elif d.GetClass() == "PCB_TEXTBOX" and "Active Serial" in d.GetText():
+        d.SetText("JTAG")          # P100 is now the JTAG header
 
 # Parts handled by this script (listed explicitly below) and the FPGA
 # decoupling capacitors (placed by fanout.py): none of them is an obstacle
@@ -164,13 +175,13 @@ for r in sorted(to_place - set(fps)):
 place_at("J200", 70.1, 30.0 + 3.675, rot=180)
 
 # 2. USB-PD, ESD, VBUS sense: below the connector.
-R_PD = (64.5, 39.0, 83.5, 49.0)
+R_PD = (64.5, 38.6, 83.5, 50.5)
 group(["D203", "D204"], (64.5, 38.6, 76, 41.5), rot=0)
 group(["U209", "C221", "R218", "D207", "R219", "D208", "R220", "R221", "R222", "D209"], R_PD)
 
 # 3. Input mux next to the external input terminal and the ON switch.
 group(["U210", "C222", "D210", "R223", "R224", "R225", "R226", "R227", "R228", "R229", "C223", "C224"],
-      (64.5, 49.0, 83.5, 59.5))
+      (64.5, 50.5, 83.5, 60.0))
 
 # 4. Buck converters in the former logo area: IC, inductor, caps, resistors.
 # The 1V0 core buck sits right next to the BGA (up to 1.5 A on a rail with
@@ -199,10 +210,12 @@ group(["U212", "R238", "R239", "C247", "C248", "R240"], (99.5, 74.0, 114.5, 91.5
 # 6. FPGA: BGA in place of the TQFP, rotated 180 degrees so that banks 34/35
 # face the DUT/platform headers. Configuration parts around the flash.
 place_at("U100", 105.5, 113.8, rot=180)
+# JTAG header below the mounting hole at (61, 92.5), then the configuration
+# resistors around the flash.
+group(["P100"], (60.5, 96.5, 69.0, 116.0), rot=0)
 group(["R101", "R102", "R103", "R104", "R105", "R106", "R107", "R108", "R109", "R113"], (69.0, 96.0, 95.0, 113.0))
 # VCCADC filter on the bottom side, next to the BGA.
 group(["L100", "C170", "C171"], (88.0, 112.0, 96.5, 124.0), bottom=True)
-group(["P100"], (62.0, 91.5, 68.5, 109.0), rot=0)
 
 # 7. LED shift registers next to U400, LED resistors on the bottom side under
 # the LED rows.

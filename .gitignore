@@ -15,3 +15,4 @@ fpga-arch/artix7/.Xil/
 # Python
 __pycache__/
 *.pyc
+hw/kicad/.jlc-export.*
