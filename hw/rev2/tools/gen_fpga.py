@@ -184,7 +184,7 @@ X2 = 600
 g = Grid(sheet, X2, 40, 300, "Configuration: Master SPI x4 (M[2:0] = 001), W25Q128JV")
 g.add("U105", sym_flash, {"1": "FLASH_CS", "2": "FLASH_IO1", "3": "FLASH_IO2", "4": "GND",
                           "5": "FLASH_IO0", "6": "FLASH_CLK", "7": "FLASH_IO3", "8": "3V3_FPGA"},
-      value="W25Q128JVSIQ", footprint="Package_SO:SOIC-8_5.23x5.23mm_P1.27mm",
+      value="W25Q128JVSIQ", footprint="Package_SO:SOIC-8_5.3x5.3mm_P1.27mm",
       fields={"LCSC": "C97521", "MANUFACTURER PN": "W25Q128JVSIQ", "MANUFACTURER": "Winbond"})
 base.place(g, "C151", {"1": "GND", "2": "3V3_FPGA"})
 R(g, "10k", "3V3_FPGA", "FLASH_CS")
