@@ -1,0 +1,135 @@
+(footprint "XTAL_2520"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0.55 1.476 180)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "2c65b288-90ad-4155-bfae-b5472ef6c79d")
+		(effects
+			(font
+				(size 0.4 0.4)
+				(thickness 0.06)
+			)
+			(justify left bottom)
+		)
+	)
+	(property "Value" "Oscillator - 25MHz - 3.3V - HCMOS - ECS-2520S33-250-FN-TR"
+		(at 1.2319 -3.70459 180)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "6580bb06-3dda-4e35-944f-c7113ac28714")
+		(effects
+			(font
+				(size 1.524 1.524)
+				(thickness 0.254)
+			)
+			(justify left bottom)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0a626445-7661-4c66-ae87-b58a90e6cc36")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "90541014-cdc0-442c-8deb-4f73a17b9be6")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(sheetname "Scaffold\\U_FPGA")
+	(sheetfile "Scaffold\\U_FPGA.kicad_sch")
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -1.25 -0.18)
+		(end -1.25 0.18)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4cd2ec3d-212d-41dc-86de-61758b0c28fb")
+	)
+	(fp_line
+		(start 0.3 -1)
+		(end -0.3 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "fc94f6bf-61e3-4bd8-a261-dbe7d4c70c9a")
+	)
+	(fp_line
+		(start 0.3 1)
+		(end -0.3 1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0d6997bd-0e11-429f-b301-2b998e946a6d")
+	)
+	(fp_line
+		(start 1.25 -0.18)
+		(end 1.25 0.18)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "47755068-d19e-4b43-be8c-19ec1dd429a6")
+	)
+	(fp_circle
+		(center 1.295 -1.35)
+		(end 1.295 -1.32764)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "987db16c-1b21-4132-bfc3-4d94036a19a3")
+	)
+	(pad "1" smd rect
+		(at 0.925 -0.725)
+		(size 0.9 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "6369bd4c-6b82-4d0e-8d4b-f6cccd22dcef")
+	)
+	(pad "2" smd rect
+		(at -0.925 -0.725)
+		(size 0.9 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "39937359-b5c5-4896-80fa-4d79a4389f14")
+	)
+	(pad "3" smd rect
+		(at -0.925 0.725)
+		(size 0.9 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "4e71bed0-e34e-485e-828a-22fe47d3473c")
+	)
+	(pad "4" smd rect
+		(at 0.925 0.725)
+		(size 0.9 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bf4b08c8-9289-4b1e-9bc9-cee86fd99415")
+	)
+	(embedded_fonts no)
+)

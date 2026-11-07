@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+# KiCad local state and backups
+*.kicad_prl
+hw/kicad/.history/
+hw/kicad/*-backups/
+*.kicad_sch-bak
+*.kicad_pcb-bak
+fp-info-cache
+# Vivado build outputs
+fpga-arch/artix7/build/
+fpga-arch/artix7/.Xil/
+*.jou
+*.log
