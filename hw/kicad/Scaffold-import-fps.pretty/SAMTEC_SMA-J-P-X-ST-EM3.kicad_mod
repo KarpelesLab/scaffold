@@ -1287,21 +1287,21 @@
 		(thermal_bridge_angle 90)
 		(uuid "10429f80-edd8-4eb4-be7f-f9d67872297c")
 	)
-	(pad "G1" smd rect
+	(pad "2" smd rect
 		(at -4.407 -0.15812)
 		(size 1.186 6.846)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(solder_mask_margin 0.05)
 		(uuid "050adb0e-5963-432d-9b95-129c7b744100")
 	)
-	(pad "G2" smd rect
+	(pad "3" smd rect
 		(at 4.407 -0.158)
 		(size 1.186 6.846)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(solder_mask_margin 0.05)
 		(uuid "7fe0dc52-0870-4817-8fde-555e197fea46")
 	)
-	(pad "S1" smd rect
+	(pad "1" smd rect
 		(at 0 -4.886)
 		(size 1.1 2.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")

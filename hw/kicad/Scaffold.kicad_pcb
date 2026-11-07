@@ -172,7 +172,7 @@
 			(name "Resistors DUT to platform not mounted")
 		)
 	)
-	(footprint "Scaffold-import-fps:A"
+	(footprint "Scaffold-import-fps:SOD323_A"
 		(layer "F.Cu")
 		(uuid "001b3e62-a7d0-4ba6-bcc6-7e34364535c1")
 		(at 128.5511 71.0286 180)
@@ -5367,7 +5367,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "31164620-31c9-4c61-b55d-c28330bb6716")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -5375,7 +5375,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "30fada16-c185-4877-8201-ae5691b6891f")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.40699 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -5383,7 +5383,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "30b1f808-8cfb-48cc-903c-41bd5115f795")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -15603,7 +15603,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "9421ef8c-ba7c-487b-b357-95c1e12c2f9e")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -15611,7 +15611,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "df696d05-5c97-456c-aedd-b11f219c248d")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -15619,7 +15619,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "e6bc1115-6bc5-40d8-9f55-257c40c2f091")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -16936,7 +16936,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "6fb1fca9-7fa5-4c86-a257-c0ffa8b7bfe4")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -16944,7 +16944,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "46a8c80f-dc3c-48a7-a25a-596a51579aa2")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -16952,7 +16952,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "f4f3e6e2-3bba-4cbc-bd46-35ea9e518cdd")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -18827,7 +18827,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "94d5b355-6cac-4e17-87a8-4e942e81526b")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -18835,7 +18835,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "f9030b43-dee5-4b8d-84e9-acb5dca86e98")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -18843,7 +18843,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "9f53b800-bc06-4d88-bc72-8738403ba211")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -22582,7 +22582,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "10429f80-edd8-4eb4-be7f-f9d67872297c")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812 270)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -22590,7 +22590,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "050adb0e-5963-432d-9b95-129c7b744100")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158 270)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -22598,7 +22598,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "7fe0dc52-0870-4817-8fde-555e197fea46")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886 270)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -24147,7 +24147,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "b120904a-e85b-484e-b70a-4a8ace80cb7b")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.40699 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -24155,7 +24155,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "29c4ac30-9bee-4750-844f-0026fca61afd")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -24163,7 +24163,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "7549b3d8-57d2-469c-a6e9-0b85111ee443")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -47280,7 +47280,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "e654c17b-5d27-48fc-8639-ff1702642583")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812 90)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -47288,7 +47288,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "8e53df78-c136-43e0-86fc-e0b4e6b9dc1c")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158 90)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -47296,7 +47296,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "d8a61380-4f4e-452a-ae1f-c1daed62be7f")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886 90)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -48672,7 +48672,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "d8f070bf-bb24-4454-9fb6-af540f8097ca")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -48680,7 +48680,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "9fd4c10e-31be-4708-9272-f8237f1bc446")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -48688,7 +48688,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "6123e7bd-ddbd-4a9e-b849-b9cfd3c3c18e")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -48919,7 +48919,7 @@
 			)
 		)
 	)
-	(footprint "Scaffold-import-fps:A"
+	(footprint "Scaffold-import-fps:SOD323_A"
 		(layer "F.Cu")
 		(uuid "472505d8-a83c-439a-9794-0b99220376f5")
 		(at 129.6511 61.3536)
@@ -55584,7 +55584,7 @@
 			)
 		)
 	)
-	(footprint "Scaffold-import-fps:A"
+	(footprint "Scaffold-import-fps:SOD323_A"
 		(layer "F.Cu")
 		(uuid "6d0da62b-0191-48ea-b707-12ebff6cfdcc")
 		(at 111.6011 62.7036)
@@ -57393,7 +57393,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "97850cbb-ce38-4af8-a1c8-3efd7da70caf")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -57401,7 +57401,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "e5bbaca4-dbef-492a-92ea-c6fc643be210")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -57409,7 +57409,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "bb4ac705-3d01-4fb9-a56d-ffdc413b4467")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -60457,7 +60457,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "3f1a5e61-d219-4274-8aac-27d97a189895")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812 270)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -60465,7 +60465,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "076bf84e-b271-4774-8b18-a7b4b6385cf8")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158 270)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -60473,7 +60473,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "99efdb99-4fa9-4469-b9c3-dca45e2129bb")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886 270)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -61733,7 +61733,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Scaffold-import-fps:A"
+	(footprint "Scaffold-import-fps:SOD323_A"
 		(layer "F.Cu")
 		(uuid "7efc451a-12c4-41eb-afb6-a7791db22853")
 		(at 110.3011 72.3786 180)
@@ -65661,7 +65661,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "d2d2be15-358b-46a3-bf96-247d5519f773")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -65669,7 +65669,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "43a687dc-3318-4199-8bc4-089ea7d1b6cf")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -65677,7 +65677,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "084dca3d-58fd-4e16-9914-f8f00da103c2")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -72442,7 +72442,7 @@
 			)
 		)
 	)
-	(footprint "Scaffold-import-fps:A"
+	(footprint "Scaffold-import-fps:SOD323_A"
 		(layer "F.Cu")
 		(uuid "b6d62e42-d4fc-4b63-91d4-e270ffb54668")
 		(at 72.4511 106.4036 90)
@@ -75919,7 +75919,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "e2e41421-061a-417e-afe1-ae399810fb5d")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.40699 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -75927,7 +75927,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "1f0483eb-a554-443f-a8e6-0e66bed2d45d")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.407 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -75935,7 +75935,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "277594d9-56ea-4b07-9e85-9d1fb7a1c055")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -99737,7 +99737,7 @@
 			(thermal_bridge_angle 90)
 			(uuid "e16c913d-8c29-4916-a343-1e897a108a8d")
 		)
-		(pad "G1" smd rect
+		(pad "2" smd rect
 			(at -4.407 -0.15812)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -99745,7 +99745,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "29135181-7d25-4834-b2bb-0d49e77f37c7")
 		)
-		(pad "G2" smd rect
+		(pad "3" smd rect
 			(at 4.40699 -0.158)
 			(size 1.186 6.846)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -99753,7 +99753,7 @@
 			(solder_mask_margin 0.05)
 			(uuid "7db0a9af-87e8-46fd-a54d-99a6a6e16356")
 		)
-		(pad "S1" smd rect
+		(pad "1" smd rect
 			(at 0 -4.886)
 			(size 1.1 2.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
@@ -108297,7 +108297,7 @@
 			)
 		)
 	)
-	(footprint "Scaffold-import-fps:A"
+	(footprint "Scaffold-import-fps:SOD323_A"
 		(layer "B.Cu")
 		(uuid "05014e88-a3e3-4175-8364-971c1af6d27e")
 		(at 62.4511 111.1536 90)
@@ -116773,7 +116773,7 @@
 			)
 		)
 	)
-	(footprint "Scaffold-import-fps:A"
+	(footprint "Scaffold-import-fps:SOD323_A"
 		(layer "B.Cu")
 		(uuid "933bf4fc-4635-43c0-adff-198ba0c15be4")
 		(at 61.3011 103.1036)
@@ -119221,7 +119221,7 @@
 			)
 		)
 	)
-	(footprint "Scaffold-import-fps:A"
+	(footprint "Scaffold-import-fps:SOD323_A"
 		(layer "B.Cu")
 		(uuid "b400983f-6d09-404d-ba69-23b40b9b5d91")
 		(at 56.7511 105.3036)

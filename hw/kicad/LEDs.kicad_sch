@@ -8070,7 +8070,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "046ec7d1-c03a-44fb-93f6-9572010a457b")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0102"
 			(at 25.4 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -8127,7 +8127,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0102")
 					(unit 1)
 				)
 			)
@@ -8591,7 +8591,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "36f3ece3-caea-4b79-b942-c6d60c27f4d6")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0103"
 			(at 83.82 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -8648,7 +8648,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0103")
 					(unit 1)
 				)
 			)
@@ -9085,7 +9085,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "46e4424a-a581-4d9f-b29b-8d419b735a87")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0104"
 			(at 208.28 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -9142,7 +9142,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0104")
 					(unit 1)
 				)
 			)
@@ -9159,7 +9159,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "494f9b3e-a929-477e-9818-c2a874d71c4f")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0105"
 			(at 147.32 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -9216,7 +9216,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0105")
 					(unit 1)
 				)
 			)
@@ -9548,7 +9548,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "598d5e61-a69a-4033-9f78-c294634ddeac")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0106"
 			(at 172.72 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -9606,7 +9606,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0106")
 					(unit 1)
 				)
 			)
@@ -10724,7 +10724,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "969ffc68-a0b6-452c-978c-f958583a9cac")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0107"
 			(at 40.64 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -10781,7 +10781,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0107")
 					(unit 1)
 				)
 			)
@@ -10798,7 +10798,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "9ca78395-6225-45dc-a49d-ee85485fb1de")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0108"
 			(at 185.42 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -10855,7 +10855,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0108")
 					(unit 1)
 				)
 			)
@@ -11085,7 +11085,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "a7111cea-9fc5-4964-95b5-c61ceb3571fc")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0109"
 			(at 220.98 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -11143,7 +11143,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0109")
 					(unit 1)
 				)
 			)
@@ -11455,7 +11455,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ce0d0603-c037-4b98-8bad-6a491ab543da")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0110"
 			(at 175.26 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -11512,7 +11512,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0110")
 					(unit 1)
 				)
 			)
@@ -11529,7 +11529,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "d1761c69-f7d6-4567-a3a6-6d22d9593982")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0111"
 			(at 60.96 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -11586,7 +11586,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0111")
 					(unit 1)
 				)
 			)
@@ -11813,7 +11813,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e58a56bd-9d86-440e-9c0e-60b593812e74")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0112"
 			(at 220.98 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -11871,7 +11871,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0112")
 					(unit 1)
 				)
 			)
@@ -11999,7 +11999,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "f3ffa2ad-8fbc-4b26-a822-994cc944ee32")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0113"
 			(at 93.98 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -12057,7 +12057,7 @@
 		(instances
 			(project "Scaffold"
 				(path "/0930e4eb-3812-4ad2-a87e-ee25991a40db/5c1675e7-0838-4aa3-b6c4-12260e3f42a5"
-					(reference "#PWR?")
+					(reference "#PWR0113")
 					(unit 1)
 				)
 			)
