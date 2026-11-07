@@ -245,7 +245,7 @@ for logo in ("Logo200", "Logo201", "Logo202", "Logo203"):
     base.place(g, logo, {})
 
 # ERC: rails driven through inductors, switches or connectors.
-sheet.power_flags(["VBUS_C", "VEXT", "VIN", "VPRE", "1V0", "1V8", "3V3_FPGA", "3V3_OPA", "GND"], 25, 20)
+sheet.power_flags(["VBUS_C", "VEXT", "VIN", "VPRE", "1V0", "1V8", "3V3_FPGA", "3V3_OPA", "VCC_IO_FPGA", "GND"], 25, 20)
 
 sheet.write(OUT)
 print("wrote", OUT, "-", len(sheet.parts), "parts")

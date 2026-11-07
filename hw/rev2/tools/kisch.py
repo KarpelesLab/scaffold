@@ -21,8 +21,18 @@ KICAD_SYMBOLS = "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/"
 GRID = 2.54
 
 
-def new_uuid():
-    return str(_uuid.uuid4())
+_NS = _uuid.UUID("5ca5f01d-2e7a-4c1e-9d0a-0b0a2d5ca5f0")
+_counter = [0]
+
+
+def new_uuid(key=None):
+    """Deterministic UUIDs, so that regenerating a sheet keeps the links
+    between schematic symbols and PCB footprints. Symbols use a key made of
+    sheet/reference/unit; other items use a running counter."""
+    if key is None:
+        _counter[0] += 1
+        key = "item/%d" % _counter[0]
+    return str(_uuid.uuid5(_NS, key))
 
 
 def q(s):
@@ -164,7 +174,8 @@ class Sheet:
         self.project = project
         self.paper = paper
         self.power_nets = set(power_nets) | {"GND"}
-        self.uuid = sheet_uuid or new_uuid()
+        self.uuid = sheet_uuid or new_uuid("sheet/" + title)
+        _counter[0] = 0
         self.libs = {}
         self.items = []
         self.parts = {}      # ref -> dict(sym, nets, value, fields)
@@ -211,7 +222,7 @@ class Sheet:
 
     # -- symbols ----------------------------------------------------------
     def _symbol_instance(self, lib_id, ref, value, footprint, x, y, rot, unit, fields, in_bom=True, dnp=False):
-        u = new_uuid()
+        u = new_uuid("%s/%s/%s/%d" % (self.uuid, ref, lib_id if ref.startswith("#") else "", unit))
         props = [("Reference", ref, False), ("Value", value, False),
                  ("Footprint", footprint, True), ("Datasheet", "", True)]
         props += [(k, v, True) for k, v in fields.items()]
@@ -220,7 +231,7 @@ class Sheet:
             ox, oy = (x + 3.0, y - 2.0 + 2.0 * i) if i < 2 else (x, y)
             ptxt += ('\t\t(property %s %s\n\t\t\t(at %s %s 0)\n%s\t\t\t(effects\n\t\t\t\t(font\n\t\t\t\t\t(size 1.27 1.27)\n\t\t\t\t)\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n'
                      % (q(k), q(v), _fmt(ox), _fmt(oy), "\t\t\t(hide yes)\n" if (hide or ref.startswith("#")) and k != "Value" else ""))
-        pin_uuids = "".join('\t\t(pin %s\n\t\t\t(uuid %s)\n\t\t)\n' % (q(p["number"]), q(new_uuid()))
+        pin_uuids = "".join('\t\t(pin %s\n\t\t\t(uuid %s)\n\t\t)\n' % (q(p["number"]), q(new_uuid(u + "/" + p["number"])))
                             for p in self.libs[lib_id].pins if p["unit"] in (0, unit))
         self.items.append(
             '\t(symbol\n\t\t(lib_id %s)\n\t\t(at %s %s %d)\n\t\t(unit %d)\n\t\t(exclude_from_sim no)\n'
