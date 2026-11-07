@@ -12,3 +12,6 @@ fpga-arch/artix7/build/
 fpga-arch/artix7/.Xil/
 *.jou
 *.log
+# Python
+__pycache__/
+*.pyc
