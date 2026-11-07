@@ -29,8 +29,9 @@ R0603 = "Resistor_SMD:R_0603_1608Metric"
 C0603 = "Capacitor_SMD:C_0603_1608Metric"
 CAPS = {"100uF": ("Capacitor_SMD:C_1206_3216Metric", "C15008", "100uF 6.3V"),
         "47uF": ("Capacitor_SMD:C_0805_2012Metric", "C16780", "47uF 6.3V"),
-        "4.7uF": (C0603, "C19666", "4.7uF 16V"),
-        "0.47uF": (C0603, "C1623", "470nF 25V"),
+        # 0402: these sit on the bottom side under the 0.8 mm-pitch BGA.
+        "4.7uF": ("Capacitor_SMD:C_0402_1005Metric", "C23733", "4.7uF 10V"),
+        "0.47uF": ("Capacitor_SMD:C_0402_1005Metric", "C47339", "470nF 10V"),
         "1uF": (C0603, "C15849", "1uF 50V"),
         "100nF": (C0603, "C14663", "100nF 50V")}
 RES = {"330": "C23138", "1k": "C21190", "4.7k": "C23162", "10k": "C25804"}

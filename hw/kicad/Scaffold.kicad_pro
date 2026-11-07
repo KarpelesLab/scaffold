@@ -141,22 +141,22 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.2,
+        "min_clearance": 0.1,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.025,
+        "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
-        "min_hole_clearance": 0.25,
-        "min_hole_to_hole": 0.09,
+        "min_hole_clearance": 0.2,
+        "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
         "min_silk_clearance": 0.0,
-        "min_text_height": 0.8,
-        "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.098,
-        "min_track_width": 0.25,
+        "min_text_height": 0.6,
+        "min_text_thickness": 0.1,
+        "min_through_hole_diameter": 0.2,
+        "min_track_width": 0.1,
         "min_via_annular_width": 0.1,
-        "min_via_diameter": 0.1,
+        "min_via_diameter": 0.4,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -500,29 +500,98 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": -1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
         "tuning_profile": "",
+        "wire_width": 6,
+        "name": "Default",
+        "priority": -1,
+        "track_width": 0.2,
+        "clearance": 0.15,
         "via_diameter": 0.6,
-        "via_drill": 0.3,
-        "wire_width": 6
+        "via_drill": 0.3
       },
       {
-        "name": "All Nets",
+        "bus_width": 12,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": -1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "tuning_profile": ""
+        "tuning_profile": "",
+        "wire_width": 6,
+        "name": "FPGA_IO",
+        "priority": 2,
+        "track_width": 0.1,
+        "clearance": 0.1,
+        "via_diameter": 0.4,
+        "via_drill": 0.2
+      },
+      {
+        "bus_width": 12,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "tuning_profile": "",
+        "wire_width": 6,
+        "name": "FPGA_PWR",
+        "priority": 1,
+        "track_width": 0.4,
+        "clearance": 0.1,
+        "via_diameter": 0.45,
+        "via_drill": 0.2
+      },
+      {
+        "bus_width": 12,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "tuning_profile": "",
+        "wire_width": 6,
+        "name": "GND",
+        "priority": 3,
+        "track_width": 0.4,
+        "clearance": 0.1,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      },
+      {
+        "bus_width": 12,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "tuning_profile": "",
+        "wire_width": 6,
+        "name": "POWER",
+        "priority": 0,
+        "track_width": 0.8,
+        "clearance": 0.2,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
       }
     ],
     "meta": {
@@ -530,7 +599,416 @@
     },
     "net_colors": {},
     "netclass_assignments": {},
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO0_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO0_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO10_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO10_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO11_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO11_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO12_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO12_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO13_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO13_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO14_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO14_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO15_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO15_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO1_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO1_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO2_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO2_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO3_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO3_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO4_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO4_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO5_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO5_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO6_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO6_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO7_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO7_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO8_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO8_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO9_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/IO9_PLAT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_Connectors/TEARING"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/CLK_25M"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/CLK_EXT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/DIR_A0"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/DIR_A1"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/DIR_A2"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/DIR_A3"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/DONE"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/EN_VCC_DUT"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/EN_VCC_PLATFORM"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/FLASH_CLK"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/FLASH_CS"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/FLASH_IO0"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/FLASH_IO1"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/FLASH_IO2"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/FLASH_IO3"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/INIT_B"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/IO_A0"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/IO_A1"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/IO_A2"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/IO_A3"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/JTAG_TCK"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/JTAG_TDI"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/JTAG_TDO"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/JTAG_TMS"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/LED_CLK"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/LED_LE"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/LED_SDI"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/LED_SDO"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/LED_{slash}OE"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/MODE_M0"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/MODE_M1"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/MODE_M2"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/PROGRAM_B"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/PUDC_B"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/PULL_D0"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/PULL_D1"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/PULL_D2"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/RESET_N"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/RXD"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/SPARE_0"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/SPARE_1"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/SPARE_2"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/SPARE_3"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/SPARE_4"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/SPARE_5"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/SPARE_6"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "/U_FPGA/TXD"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "PD_SCL"
+      },
+      {
+        "netclass": "FPGA_IO",
+        "pattern": "PD_SDA"
+      },
+      {
+        "netclass": "FPGA_PWR",
+        "pattern": "1V0"
+      },
+      {
+        "netclass": "FPGA_PWR",
+        "pattern": "1V8"
+      },
+      {
+        "netclass": "FPGA_PWR",
+        "pattern": "3V3_FPGA"
+      },
+      {
+        "netclass": "FPGA_PWR",
+        "pattern": "VCC_IO_FPGA"
+      },
+      {
+        "netclass": "FPGA_PWR",
+        "pattern": "VCCADC"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VBUS_C"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VEXT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VIN_MUX"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VIN"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VPRE"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "Vsupply"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VCC_PLATFORM"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VCC_DUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VCC_PLATFORM_PERMANENT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "VCC_DUT_PERMANENT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/U_Power/SW_*"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/U_Power/*_LDO_OUT"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/U_Power/PLAT_EXT*"
+      },
+      {
+        "netclass": "POWER",
+        "pattern": "/U_Power/DUT_EXT*"
+      },
+      {
+        "netclass": "GND",
+        "pattern": "GND"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {

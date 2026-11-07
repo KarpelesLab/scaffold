@@ -23398,7 +23398,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 665.94 381 0)
 			(effects
 				(font
@@ -23407,7 +23407,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 662.94 381 0)
 			(hide yes)
 			(effects
@@ -23427,7 +23427,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 662.94 381 0)
 			(hide yes)
 			(effects
@@ -23590,7 +23590,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 691.34 381 0)
 			(effects
 				(font
@@ -23599,7 +23599,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 688.34 381 0)
 			(hide yes)
 			(effects
@@ -23619,7 +23619,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 688.34 381 0)
 			(hide yes)
 			(effects
@@ -23782,7 +23782,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 716.74 381 0)
 			(effects
 				(font
@@ -23791,7 +23791,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 713.74 381 0)
 			(hide yes)
 			(effects
@@ -23811,7 +23811,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 713.74 381 0)
 			(hide yes)
 			(effects
@@ -23974,7 +23974,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 742.14 381 0)
 			(effects
 				(font
@@ -23983,7 +23983,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 739.14 381 0)
 			(hide yes)
 			(effects
@@ -24003,7 +24003,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 739.14 381 0)
 			(hide yes)
 			(effects
@@ -24166,7 +24166,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 767.54 381 0)
 			(effects
 				(font
@@ -24175,7 +24175,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 764.54 381 0)
 			(hide yes)
 			(effects
@@ -24195,7 +24195,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 764.54 381 0)
 			(hide yes)
 			(effects
@@ -24358,7 +24358,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 792.94 381 0)
 			(effects
 				(font
@@ -24367,7 +24367,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 789.94 381 0)
 			(hide yes)
 			(effects
@@ -24387,7 +24387,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 789.94 381 0)
 			(hide yes)
 			(effects
@@ -24550,7 +24550,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 818.34 381 0)
 			(effects
 				(font
@@ -24559,7 +24559,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 815.34 381 0)
 			(hide yes)
 			(effects
@@ -24579,7 +24579,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 815.34 381 0)
 			(hide yes)
 			(effects
@@ -24742,7 +24742,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 843.74 381 0)
 			(effects
 				(font
@@ -24751,7 +24751,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 840.74 381 0)
 			(hide yes)
 			(effects
@@ -24771,7 +24771,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 840.74 381 0)
 			(hide yes)
 			(effects
@@ -24934,7 +24934,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 869.14 381 0)
 			(effects
 				(font
@@ -24943,7 +24943,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 866.14 381 0)
 			(hide yes)
 			(effects
@@ -24963,7 +24963,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 866.14 381 0)
 			(hide yes)
 			(effects
@@ -25126,7 +25126,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 615.14 416.56 0)
 			(effects
 				(font
@@ -25135,7 +25135,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 612.14 416.56 0)
 			(hide yes)
 			(effects
@@ -25155,7 +25155,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 612.14 416.56 0)
 			(hide yes)
 			(effects
@@ -25318,7 +25318,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 640.54 416.56 0)
 			(effects
 				(font
@@ -25327,7 +25327,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 637.54 416.56 0)
 			(hide yes)
 			(effects
@@ -25347,7 +25347,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 637.54 416.56 0)
 			(hide yes)
 			(effects
@@ -25510,7 +25510,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 665.94 416.56 0)
 			(effects
 				(font
@@ -25519,7 +25519,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 662.94 416.56 0)
 			(hide yes)
 			(effects
@@ -25539,7 +25539,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 662.94 416.56 0)
 			(hide yes)
 			(effects
@@ -25702,7 +25702,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 691.34 416.56 0)
 			(effects
 				(font
@@ -25711,7 +25711,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 688.34 416.56 0)
 			(hide yes)
 			(effects
@@ -25731,7 +25731,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 688.34 416.56 0)
 			(hide yes)
 			(effects
@@ -25894,7 +25894,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 716.74 416.56 0)
 			(effects
 				(font
@@ -25903,7 +25903,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 713.74 416.56 0)
 			(hide yes)
 			(effects
@@ -25923,7 +25923,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 713.74 416.56 0)
 			(hide yes)
 			(effects
@@ -26086,7 +26086,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 742.14 416.56 0)
 			(effects
 				(font
@@ -26095,7 +26095,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 739.14 416.56 0)
 			(hide yes)
 			(effects
@@ -26115,7 +26115,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 739.14 416.56 0)
 			(hide yes)
 			(effects
@@ -26278,7 +26278,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 767.54 416.56 0)
 			(effects
 				(font
@@ -26287,7 +26287,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 764.54 416.56 0)
 			(hide yes)
 			(effects
@@ -26307,7 +26307,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 764.54 416.56 0)
 			(hide yes)
 			(effects
@@ -26662,7 +26662,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 818.34 416.56 0)
 			(effects
 				(font
@@ -26671,7 +26671,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 815.34 416.56 0)
 			(hide yes)
 			(effects
@@ -26691,7 +26691,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 815.34 416.56 0)
 			(hide yes)
 			(effects
@@ -26854,7 +26854,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 843.74 416.56 0)
 			(effects
 				(font
@@ -26863,7 +26863,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 840.74 416.56 0)
 			(hide yes)
 			(effects
@@ -26883,7 +26883,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 840.74 416.56 0)
 			(hide yes)
 			(effects
@@ -27046,7 +27046,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 869.14 416.56 0)
 			(effects
 				(font
@@ -27055,7 +27055,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 866.14 416.56 0)
 			(hide yes)
 			(effects
@@ -27075,7 +27075,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 866.14 416.56 0)
 			(hide yes)
 			(effects
@@ -27238,7 +27238,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 615.14 454.66 0)
 			(effects
 				(font
@@ -27247,7 +27247,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 612.14 454.66 0)
 			(hide yes)
 			(effects
@@ -27267,7 +27267,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 612.14 454.66 0)
 			(hide yes)
 			(effects
@@ -27430,7 +27430,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 640.54 454.66 0)
 			(effects
 				(font
@@ -27439,7 +27439,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 637.54 454.66 0)
 			(hide yes)
 			(effects
@@ -27459,7 +27459,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 637.54 454.66 0)
 			(hide yes)
 			(effects
@@ -27622,7 +27622,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 665.94 454.66 0)
 			(effects
 				(font
@@ -27631,7 +27631,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 662.94 454.66 0)
 			(hide yes)
 			(effects
@@ -27651,7 +27651,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 662.94 454.66 0)
 			(hide yes)
 			(effects
@@ -28198,7 +28198,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 742.14 454.66 0)
 			(effects
 				(font
@@ -28207,7 +28207,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 739.14 454.66 0)
 			(hide yes)
 			(effects
@@ -28227,7 +28227,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 739.14 454.66 0)
 			(hide yes)
 			(effects
@@ -28390,7 +28390,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 767.54 454.66 0)
 			(effects
 				(font
@@ -28399,7 +28399,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 764.54 454.66 0)
 			(hide yes)
 			(effects
@@ -28419,7 +28419,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 764.54 454.66 0)
 			(hide yes)
 			(effects
@@ -28582,7 +28582,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 792.94 454.66 0)
 			(effects
 				(font
@@ -28591,7 +28591,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 789.94 454.66 0)
 			(hide yes)
 			(effects
@@ -28611,7 +28611,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 789.94 454.66 0)
 			(hide yes)
 			(effects
@@ -28774,7 +28774,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 818.34 454.66 0)
 			(effects
 				(font
@@ -28783,7 +28783,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 815.34 454.66 0)
 			(hide yes)
 			(effects
@@ -28803,7 +28803,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 815.34 454.66 0)
 			(hide yes)
 			(effects
@@ -28966,7 +28966,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 843.74 454.66 0)
 			(effects
 				(font
@@ -28975,7 +28975,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 840.74 454.66 0)
 			(hide yes)
 			(effects
@@ -28995,7 +28995,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 840.74 454.66 0)
 			(hide yes)
 			(effects
@@ -29158,7 +29158,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 869.14 454.66 0)
 			(effects
 				(font
@@ -29167,7 +29167,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 866.14 454.66 0)
 			(hide yes)
 			(effects
@@ -29187,7 +29187,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 866.14 454.66 0)
 			(hide yes)
 			(effects
@@ -29350,7 +29350,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 615.14 490.22 0)
 			(effects
 				(font
@@ -29359,7 +29359,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 612.14 490.22 0)
 			(hide yes)
 			(effects
@@ -29379,7 +29379,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 612.14 490.22 0)
 			(hide yes)
 			(effects
@@ -29542,7 +29542,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 640.54 490.22 0)
 			(effects
 				(font
@@ -29551,7 +29551,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 637.54 490.22 0)
 			(hide yes)
 			(effects
@@ -29571,7 +29571,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 637.54 490.22 0)
 			(hide yes)
 			(effects
@@ -29734,7 +29734,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 665.94 490.22 0)
 			(effects
 				(font
@@ -29743,7 +29743,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 662.94 490.22 0)
 			(hide yes)
 			(effects
@@ -29763,7 +29763,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 662.94 490.22 0)
 			(hide yes)
 			(effects
@@ -29926,7 +29926,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 691.34 490.22 0)
 			(effects
 				(font
@@ -29935,7 +29935,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 688.34 490.22 0)
 			(hide yes)
 			(effects
@@ -29955,7 +29955,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 688.34 490.22 0)
 			(hide yes)
 			(effects
@@ -30118,7 +30118,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 716.74 490.22 0)
 			(effects
 				(font
@@ -30127,7 +30127,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 713.74 490.22 0)
 			(hide yes)
 			(effects
@@ -30147,7 +30147,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 713.74 490.22 0)
 			(hide yes)
 			(effects
@@ -30310,7 +30310,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 742.14 490.22 0)
 			(effects
 				(font
@@ -30319,7 +30319,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 739.14 490.22 0)
 			(hide yes)
 			(effects
@@ -30339,7 +30339,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 739.14 490.22 0)
 			(hide yes)
 			(effects
@@ -30502,7 +30502,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 767.54 490.22 0)
 			(effects
 				(font
@@ -30511,7 +30511,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 764.54 490.22 0)
 			(hide yes)
 			(effects
@@ -30531,7 +30531,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 764.54 490.22 0)
 			(hide yes)
 			(effects
@@ -30694,7 +30694,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 792.94 490.22 0)
 			(effects
 				(font
@@ -30703,7 +30703,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 789.94 490.22 0)
 			(hide yes)
 			(effects
@@ -30723,7 +30723,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 789.94 490.22 0)
 			(hide yes)
 			(effects
@@ -30886,7 +30886,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 818.34 490.22 0)
 			(effects
 				(font
@@ -30895,7 +30895,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 815.34 490.22 0)
 			(hide yes)
 			(effects
@@ -30915,7 +30915,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 815.34 490.22 0)
 			(hide yes)
 			(effects
@@ -31270,7 +31270,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 869.14 490.22 0)
 			(effects
 				(font
@@ -31279,7 +31279,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 866.14 490.22 0)
 			(hide yes)
 			(effects
@@ -31299,7 +31299,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 866.14 490.22 0)
 			(hide yes)
 			(effects
@@ -31462,7 +31462,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 615.14 523.24 0)
 			(effects
 				(font
@@ -31471,7 +31471,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 612.14 523.24 0)
 			(hide yes)
 			(effects
@@ -31491,7 +31491,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 612.14 523.24 0)
 			(hide yes)
 			(effects
@@ -31654,7 +31654,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 640.54 523.24 0)
 			(effects
 				(font
@@ -31663,7 +31663,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 637.54 523.24 0)
 			(hide yes)
 			(effects
@@ -31683,7 +31683,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 637.54 523.24 0)
 			(hide yes)
 			(effects
@@ -31846,7 +31846,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7uF 16V"
+		(property "Value" "4.7uF 10V"
 			(at 665.94 523.24 0)
 			(effects
 				(font
@@ -31855,7 +31855,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 662.94 523.24 0)
 			(hide yes)
 			(effects
@@ -31875,7 +31875,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C19666"
+		(property "LCSC" "C23733"
 			(at 662.94 523.24 0)
 			(hide yes)
 			(effects
@@ -32038,7 +32038,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 691.34 523.24 0)
 			(effects
 				(font
@@ -32047,7 +32047,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 688.34 523.24 0)
 			(hide yes)
 			(effects
@@ -32067,7 +32067,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 688.34 523.24 0)
 			(hide yes)
 			(effects
@@ -32230,7 +32230,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 716.74 523.24 0)
 			(effects
 				(font
@@ -32239,7 +32239,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 713.74 523.24 0)
 			(hide yes)
 			(effects
@@ -32259,7 +32259,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 713.74 523.24 0)
 			(hide yes)
 			(effects
@@ -32422,7 +32422,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 742.14 523.24 0)
 			(effects
 				(font
@@ -32431,7 +32431,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 739.14 523.24 0)
 			(hide yes)
 			(effects
@@ -32451,7 +32451,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 739.14 523.24 0)
 			(hide yes)
 			(effects
@@ -32614,7 +32614,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 767.54 523.24 0)
 			(effects
 				(font
@@ -32623,7 +32623,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 764.54 523.24 0)
 			(hide yes)
 			(effects
@@ -32643,7 +32643,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 764.54 523.24 0)
 			(hide yes)
 			(effects
@@ -32806,7 +32806,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 792.94 523.24 0)
 			(effects
 				(font
@@ -32815,7 +32815,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 789.94 523.24 0)
 			(hide yes)
 			(effects
@@ -32835,7 +32835,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 789.94 523.24 0)
 			(hide yes)
 			(effects
@@ -32998,7 +32998,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 818.34 523.24 0)
 			(effects
 				(font
@@ -33007,7 +33007,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 815.34 523.24 0)
 			(hide yes)
 			(effects
@@ -33027,7 +33027,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 815.34 523.24 0)
 			(hide yes)
 			(effects
@@ -33190,7 +33190,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 843.74 523.24 0)
 			(effects
 				(font
@@ -33199,7 +33199,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 840.74 523.24 0)
 			(hide yes)
 			(effects
@@ -33219,7 +33219,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 840.74 523.24 0)
 			(hide yes)
 			(effects
@@ -33382,7 +33382,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF 25V"
+		(property "Value" "470nF 10V"
 			(at 869.14 523.24 0)
 			(effects
 				(font
@@ -33391,7 +33391,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 866.14 523.24 0)
 			(hide yes)
 			(effects
@@ -33411,7 +33411,7 @@
 				(justify left)
 			)
 		)
-		(property "LCSC" "C1623"
+		(property "LCSC" "C47339"
 			(at 866.14 523.24 0)
 			(hide yes)
 			(effects
