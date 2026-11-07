@@ -19,10 +19,11 @@ set out "$here/build"
 file mkdir $out
 
 # Sources shared with the Rev 1.x Quartus project. Vendor specific entities
-# (fifo512, lpm_down_counter_*, pll) are replaced by the ones from this
-# directory.
+# (fifo512, lpm_down_counter_*, pll) and board specific ones (tlc5952_driver,
+# which drives 74HC595 shift registers on Rev 2) are replaced by the ones from
+# this directory.
 set replaced {fifo512.vhd lpm_down_counter_24.vhd lpm_down_counter_27.vhd
-    lpm_down_counter_32.vhd pll.vhd}
+    lpm_down_counter_32.vhd pll.vhd tlc5952_driver.vhd}
 set qsf [open "$common/scaffold.qsf"]
 while {[gets $qsf line] >= 0} {
     if {[regexp {VHDL_FILE\s+(\S+)} $line -> f] && [lsearch $replaced $f] < 0} {

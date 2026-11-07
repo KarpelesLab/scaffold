@@ -114,22 +114,28 @@ vendor-neutral ones; the Rev 1.x Quartus project is unchanged.
 
 ## 4. Other changes forced by availability
 
-- **LED driver**: the TLC5952DAP (U400) is out of stock at JLCPCB (0–2 pcs).
-  Proposed replacement: 3 x 74HC595 (JLC basic part) driving the 24 LEDs
-  through resistors, with OE PWM-driven for brightness. The gateware driver
-  `tlc5952_driver.vhd` is replaced by a shift-register driver with the same
-  interface to `leds_module`.
+- **LED driver** (decided): the TLC5952DAP (U400) is out of stock at JLCPCB
+  (0–2 pcs). It is replaced by 3 x 74HC595D (Nexperia 74HC595D,118, LCSC
+  C5947, JLC basic part) U400–U402, powered from 3V3_FPGA, so the FPGA drives
+  them directly. Each output drives a LED through a series resistor: the
+  2 mA Kingbright LEDs get about 680 Ω, and values are set per LED colour at
+  schematic capture. Wiring: FPGA `leds_sin` → SER of U400; QH' of U400 → SER of
+  U401, and so on; `leds_sclk` → SRCLK, `leds_lat` → RCLK, `leds_blank` → /OE
+  of all three; /SRCLR tied to 3V3. Bit `leds(23)` lands on QH of U402 and
+  `leds(0)` on QA of U400.
+  Gateware: `fpga-arch/artix7/tlc5952_driver.vhd` keeps the entity name and
+  ports, so `leds_module` is unchanged. Brightness becomes a ~10 kHz PWM on
+  /OE with duty (brightness + 1)/128. Tested in `fpga-sim/artix7/tb_leds.vhd`.
 - **EPCS16** (Intel-only configuration device) → W25Q128JVSIQ, see above.
 - **ADA4895-1ARJZ** (current measurement amplifier) is in low stock (33 pcs,
   ~$10). Keep, re-check before ordering.
 
 ## 5. PCB
 
-- Stackup: **6 layers recommended** (JLC 6-layer, 1.6 mm, via-in-pad free).
-  The CSG324 is a 0.8 mm-pitch BGA. On 4 layers it is routable only by using
-  0.1 mm tracks and splitting an inner plane, which degrades the ground
-  reference under the analog measurement path. Six layers keep two solid
-  ground planes.
+- Stackup (decided): **6 layers**, JLC 1.6 mm, via-in-pad filling included.
+  Layers: L1 signal, L2 GND, L3 signal, L4 power, L5 GND, L6 signal. The
+  CSG324 is a 0.8 mm-pitch BGA; 6 layers keep two solid ground planes,
+  including the one under the analog measurement path.
 - BGA fanout: 0.2 mm drill / 0.4 mm via, 0.1 mm tracks under the BGA
   (JLC multilayer minimum: 0.09 mm track/space, 0.15 mm drill).
 - Board outline, mounting holes, connector, LED and SMA positions unchanged.
