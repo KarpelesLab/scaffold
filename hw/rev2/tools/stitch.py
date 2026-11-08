@@ -8,16 +8,21 @@ Run after fanout.py, before routing:  <kicad python> hw/rev2/tools/stitch.py
    VCC_IO_FPGA, VPRE, VIN) where the pad sits over the region of its net.
    The via goes at the first free spot around the pad (clear of all pads,
    vias and tracks of other nets, on both sides).
-2. Buck switch nodes (SW_*): a top-layer copper zone from the regulator SW
-   pin to the inductor, so that the 3 A loop is a wide copper area.
+2. Buck power copper (buck.py template): input loop, bootstrap, switch-node
+   zone and output tracks, in group rev2_buck (rebuilt on every run).
+3. A few VIN vias joining the In2 VIN zone (buck inputs) to the In3 VIN region.
 
 The autorouter then only has to route signals and the remaining power links.
 Items are grouped (rev2_stitch) and removed on re-run.
 """
 import math
 import os
+import sys
 
 import pcbnew
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import buck  # noqa: E402
 
 BOARD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "kicad", "Scaffold.kicad_pcb")
 MM = pcbnew.FromMM
@@ -25,7 +30,6 @@ GROUP = "rev2_stitch"
 IN3_NETS = {"1V0", "1V8", "3V3_FPGA", "VCC_IO_FPGA", "VPRE", "VIN"}
 CLEAR = 0.2
 
-import sys
 INCREMENTAL = "--incremental" in sys.argv   # keep existing stitching (routes attach to it)
 board = pcbnew.LoadBoard(BOARD)
 group = None
@@ -41,10 +45,32 @@ if group is None:
     group = pcbnew.PCB_GROUP(board)
     group.SetName(GROUP)
     board.Add(group)
+# Buck copper: always rebuilt (the regulators are placed by template).
+for g in list(board.Groups()):
+    if g.GetName() == "rev2_buck":
+        for item in list(g.GetItems()):
+            board.Delete(item)
+        board.Delete(g)
+for z in list(board.Zones()):
+    if z.GetZoneName() == "switch node":
+        board.Delete(z)            # older box-shaped switch-node zones
+bgroup = pcbnew.PCB_GROUP(board)
+bgroup.SetName("rev2_buck")
+board.Add(bgroup)
+
+
+def badd(item):
+    board.Add(item)
+    bgroup.AddItem(item)
+
+
+for parts, _, _ in buck.PLAN:
+    buck.copper(board, parts, badd)
+buck_items = {i.m_Uuid.AsString() for i in bgroup.GetItems()}
 pcbnew.ZONE_FILLER(board).Fill(board.Zones())
 
-in3 = {z.GetNetname(): z for z in board.Zones() if z.GetLayer() == pcbnew.In3_Cu}
-in3_zones = [z for z in board.Zones() if z.GetLayer() == pcbnew.In3_Cu]
+# Plane regions of the stitched rails: In3, plus the VIN zone on In2.
+in3_zones = [z for z in board.Zones() if z.GetLayer() in (pcbnew.In2_Cu, pcbnew.In3_Cu) and z.GetNetname() != "GND"]
 edge = board.GetBoardEdgesBoundingBox()
 
 # Obstacles: pad boxes and vias/tracks, kept up to date as vias are added.
@@ -106,7 +132,7 @@ def in_region(net, x, y):
         return True
     pt = pcbnew.VECTOR2I(MM(x), MM(y))
     for z in in3_zones:
-        if z.GetNetname() == net and z.HitTestFilledArea(pcbnew.In3_Cu, pt):
+        if z.GetNetname() == net and z.HitTestFilledArea(z.GetLayer(), pt):
             return True
     return False
 
@@ -117,7 +143,8 @@ def add(item):
 
 
 stitched, skipped = 0, []
-fanned = {(round(s[0], 3), round(s[1], 3)) for s in segments} | {(round(s[2], 3), round(s[3], 3)) for s in segments}
+routed = [t for t in board.GetTracks() if t.GetClass() == "PCB_TRACK" and t.m_Uuid.AsString() not in buck_items]
+fanned = {(round(pcbnew.ToMM(p.x), 3), round(pcbnew.ToMM(p.y), 3)) for t in routed for p in (t.GetStart(), t.GetEnd())}
 for fp in board.GetFootprints():
     if fp.GetReference() == "U100" or "SMA" in fp.GetFPIDAsString():
         continue      # BGA: fanout.py; edge SMA: ground pads at the board edge, joined by the pours
@@ -168,34 +195,26 @@ for fp in board.GetFootprints():
         if not done:
             skipped.append("%s.%s(%s)" % (fp.GetReference(), p.GetNumber(), net))
 
-# Switch nodes: copper zone on the top layer spanning the SW pin and the inductor.
-sw = 0
-SW_NETS = ["/U_Power/SW_VPRE", "/U_Power/SW_1V0", "/U_Power/SW_1V8", "/U_Power/SW_3V3_FPGA"]
-for net in ([] if INCREMENTAL else SW_NETS):
-    ni = board.FindNet(net)
-    pts = [p for fp in board.GetFootprints() for p in fp.Pads() if p.GetNetname() == net]
-    if len(pts) < 2:
+# VIN ties: vias in the strip where the In2 VIN zone overlaps the In3 VIN region.
+ties = 0
+for x10 in range(520, 880, 5):
+    x, y = x10 / 10, 57.75
+    if ties >= 6 or not (in_region("VIN", x, y) and all(
+            z.HitTestFilledArea(z.GetLayer(), pcbnew.VECTOR2I(MM(x), MM(y)))
+            for z in in3_zones if z.GetNetname() == "VIN" and z.GetLayer() == pcbnew.In2_Cu)):
         continue
-    box = pts[0].GetBoundingBox()
-    for p in pts[1:]:
-        box.Merge(p.GetBoundingBox())
-    z = pcbnew.ZONE(board)
-    z.SetLayer(pcbnew.F_Cu)
-    z.SetNet(ni)
-    z.SetAssignedPriority(20)
-    z.SetLocalClearance(MM(0.2))
-    z.SetMinThickness(MM(0.2))
-    z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
-    z.SetZoneName("switch node")
-    o = z.Outline()
-    o.NewOutline()
-    for x, y in ((box.GetLeft(), box.GetTop()), (box.GetRight(), box.GetTop()),
-                 (box.GetRight(), box.GetBottom()), (box.GetLeft(), box.GetBottom())):
-        o.Append(x, y)
-    add(z)
-    sw += 1
+    if not via_free(x, y, 0.3, "VIN") or any(math.hypot(vx - x, vy - y) < 4 for vx, vy, _, vn in vias if vn == "VIN"):
+        continue
+    v = pcbnew.PCB_VIA(board)
+    v.SetPosition(pcbnew.VECTOR2I(MM(x), MM(y)))
+    v.SetWidth(MM(0.6))
+    v.SetDrill(MM(0.3))
+    v.SetNet(board.FindNet("VIN"))
+    add(v)
+    vias.append((x, y, 0.3, "VIN"))
+    ties += 1
 
 pcbnew.ZONE_FILLER(board).Fill(board.Zones())
 pcbnew.SaveBoard(BOARD, board)
-print("plane vias: %d; switch-node zones: %d; pads without room for a via: %d %s"
-      % (stitched, sw, len(skipped), " ".join(skipped[:30])))
+print("plane vias: %d; VIN ties: %d; pads without room for a via: %d %s"
+      % (stitched, ties, len(skipped), " ".join(skipped[:30])))

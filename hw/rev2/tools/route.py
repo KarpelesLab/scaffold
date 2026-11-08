@@ -4,6 +4,7 @@
   <kicad python> hw/rev2/tools/route.py export WORKDIR   -> WORKDIR/scaffold.dsn
   java -jar freerouting.jar -de WORKDIR/scaffold.dsn -do WORKDIR/scaffold.ses -mp 50
   <kicad python> hw/rev2/tools/route.py import WORKDIR   <- WORKDIR/scaffold.ses
+  <kicad python> hw/rev2/tools/route.py prune            (dangling routed copper)
 
 export: marks In1/In4 (ground) and In3 (power regions) as plane layers so
 that the router does not use them for signals but connects pads to them
@@ -26,8 +27,34 @@ def outer_pours(board):
     return [z for z in board.Zones() if z.GetZoneName() == POUR_NAME]
 
 
+SCRIPTED = ("rev2_fanout", "rev2_stitch", "rev2_buck")
+
+
+def prune(board):
+    """Deletes routed tracks and vias with an unconnected end (left over when
+    copper was cleared around re-placed parts), repeatedly, so that they do not
+    become locked obstacles. Scripted copper (fanout, stitching, buck) is kept."""
+    keep = set()
+    for g in board.Groups():
+        if g.GetName() in SCRIPTED:
+            keep |= {i.m_Uuid.AsString() for i in g.GetItems()}
+    total = 0
+    while True:
+        pcbnew.ZONE_FILLER(board).Fill(board.Zones())
+        board.BuildConnectivity()
+        conn = board.GetConnectivity()
+        dead = [t for t in board.GetTracks()
+                if t.m_Uuid.AsString() not in keep and conn.TestTrackEndpointDangling(t, False)]
+        if not dead:
+            return total
+        for t in dead:
+            board.Delete(t)
+        total += len(dead)
+
+
 def export(workdir):
     board = pcbnew.LoadBoard(BOARD)
+    print("pruned %d dangling tracks/vias" % prune(board))
     for layer in (pcbnew.In1_Cu, pcbnew.In3_Cu, pcbnew.In4_Cu):
         board.SetLayerType(layer, pcbnew.LT_POWER)
     board.SetLayerType(pcbnew.In2_Cu, pcbnew.LT_SIGNAL)
@@ -98,5 +125,11 @@ def import_(workdir):
     print("imported", ses, "- tracks:", len(list(board.GetTracks())))
 
 
+def prune_cmd(_):
+    board = pcbnew.LoadBoard(BOARD)
+    print("pruned %d dangling tracks/vias" % prune(board))
+    pcbnew.SaveBoard(BOARD, board)
+
+
 if __name__ == "__main__":
-    {"export": export, "import": import_}[sys.argv[1]](os.path.abspath(sys.argv[2]))
+    {"export": export, "import": import_, "prune": prune_cmd}[sys.argv[1]](os.path.abspath(sys.argv[2] if len(sys.argv) > 2 else "."))

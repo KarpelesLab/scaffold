@@ -15,6 +15,9 @@ import sys
 
 import pcbnew
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import buck  # noqa: E402
+
 BOARD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "kicad", "Scaffold.kicad_pcb")
 MM = pcbnew.FromMM
 MARGIN = 0.25          # mm, between courtyards
@@ -183,26 +186,17 @@ group(["U209", "C221", "R218", "D207", "R219", "D208", "R220", "R221", "R222", "
 group(["U210", "C222", "D210", "R223", "R224", "R225", "R226", "R227", "R228", "R229", "C223", "C224"],
       (64.5, 50.5, 83.5, 60.0))
 
-# 4. Buck converters in the former logo area: IC, inductor, caps, resistors.
-# The 1V0 core buck sits right next to the BGA (up to 1.5 A on a rail with
-# +/-50 mV tolerance); only its 12 V input (~0.1 A) travels from the input.
-BUCKS = {"U211": ("L201", (56.5, 60.0, 76.0, 76.0)),
-         "U215": ("L204", (76.0, 60.0, 92.0, 76.0)),
-         "U214": ("L203", (56.5, 76.0, 87.5, 91.0)),
-         "U213": ("L202", (114.5, 96.5, 133.0, 113.0))}
-# Passives of each buck, from the generator's numbering (gen_power.py).
-BUCK_PASSIVES = {"U211": (["C225", "C226", "C227", "C228", "C229", "C230"], ["R230", "R231"]),
-                 "U213": (["C231", "C232", "C233", "C234", "C235", "C236"], ["R232", "R233"]),
-                 "U214": (["C237", "C238", "C239", "C240", "C241"], ["R234", "R235"]),
-                 "U215": (["C242", "C243", "C244", "C245", "C246"], ["R236", "R237"])}
-for u, (l, region) in BUCKS.items():
-    caps, res = BUCK_PASSIVES[u]
-    try:
-        group([u, l] + caps + res, region)
-    except RuntimeError:
-        if os.environ.get("PLACE_DEBUG"):
-            pcbnew.SaveBoard(os.environ["PLACE_DEBUG"], board)
-        raise
+# 4. Buck converters: fixed per-regulator template (buck.py) with the input
+# caps at VIN/GND, the bootstrap cap at BST/SW, the inductor next to SW and
+# the output caps against the inductor. VPRE across the top of the former
+# logo area, 1V8 and 3V3 below it, 1V0 right next to the BGA (up to 1.5 A on
+# a rail with +/-50 mV tolerance; only its 12 V input travels from the input).
+for parts, theta, topleft in buck.PLAN:
+    buck.place(board, parts, theta, topleft)
+    placed.update(buck.refs(parts))
+bad = buck.overlaps(board, set(r for p, _, _ in buck.PLAN for r in buck.refs(p)))
+if bad:
+    raise SystemExit("buck courtyard overlaps: %s" % bad)
 
 # 5. Vsupply LDO and VCC_IO pull-up, in the old FPGA LDO area.
 group(["U212", "R238", "R239", "C247", "C248", "R240"], (99.5, 74.0, 114.5, 91.5))

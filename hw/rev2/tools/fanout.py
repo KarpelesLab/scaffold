@@ -13,9 +13,10 @@ Run with KiCad's Python after place.py:  <kicad python> hw/rev2/tools/fanout.py
    matches their supply, each with its own supply and ground via. Bulk
    capacitors are placed near the BGA.
 3. Planes: In1 (GND1) and In4 (GND2) solid ground; In3 (Power) split into
-   1V0 (core island + corridor to its buck), 3V3_FPGA (left half),
-   VCC_IO_FPGA (right half), VPRE and VIN (power input area); ground pours
-   on the outer layers.
+   1V0 (core island + corridor to its buck), 3V3_FPGA (left half, bottom
+   and LED rows), VCC_IO_FPGA (banks 34/35 side up to x = 140 mm), VPRE and
+   VIN (power input area); a VIN zone on In2 under the buck inputs; ground
+   pours on the outer layers.
 
 Re-running removes what a previous run added (items tagged in a group).
 """
@@ -333,8 +334,14 @@ add_zone("1V8", pcbnew.In3_Cu, poly_rects([
     (CX - 2.9, CY - 7.8, CX - 1.9, CY + 3.4),
     (CX - 11.2, CY - 14.6, CX - 2.0, CY - 7.8),
     (CX - 11.2, CY - 7.8, CX - 7.8, CY - 5.4)]), 9)
-add_zone("VPRE", pcbnew.In3_Cu, poly_rects([(93.0, 37.0, 136.0, 76.0), (B[0], 59.5, 76.0, 76.0)]), 5)
+# VPRE: from the U211 buck (top row of the power area) to the LDOs.
+add_zone("VPRE", pcbnew.In3_Cu, poly_rects([(93.0, 37.0, 136.0, 76.0), (93.0, 76.0, 121.0, 92.0),
+                                             (B[0], 59.5, 94.0, 72.0)]), 5)
 add_zone("VIN", pcbnew.In3_Cu, poly_rects([(B[0], B[1], 93.0, 59.5)]), 5)
+# VIN (12 V) to the buck input capacitors on the signal layer In2, which has
+# no signals to carry in the power area; it overlaps the In3 VIN region so
+# that the plane vias there join both.
+add_zone("VIN", pcbnew.In2_Cu, poly_rects([(B[0], 56.0, 88.0, 91.5)]), 0, name="VIN In2")
 # Under the BGA, 3V3 (banks 0/14/15/16) and VCC_IO (banks 34/35) VCCO balls
 # interleave: each 0.8 mm cell of the via grid goes to the rail of the
 # nearest VCCO via (Voronoi), so that every VCCO via sits in its own plane.
@@ -348,10 +355,11 @@ for i in range(-10, 10):
         n = min(vcco, key=lambda v: math.hypot(v[0] - gx, v[1] - gy))[2]
         cells[n].append((CX + gx - PITCH / 2, CY + gy - PITCH / 2, CX + gx + PITCH / 2, CY + gy + PITCH / 2))
 BGA_BOX = (CX - 8.0, CY - 8.0, CX + 8.0, CY + 8.0)
-# 3V3 parts below the BGA (LED registers, level shifters, FT232 area) are
-# in the 3V3 region up to x = 140 mm; the DUT/platform I/O area further right
-# stays VCC_IO.
-left = poly_rects([(B[0], 76.0, CX, B[3]), (76.0, 59.5, 93.0, 76.0), (CX, CY + 8.6, 140.0, B[3])])
+# 3V3 parts below the BGA (LED registers, level shifters, FT232 area) and
+# the LED rows on the right are in the 3V3 region; VCC_IO only has loads near
+# the BGA and in the level-shifter area left of x = 140 mm.
+left = poly_rects([(B[0], 72.0, CX, B[3]), (76.0, 59.5, 93.0, 76.0), (CX, CY + 8.6, 140.0, B[3]),
+                   (140.0, B[1], B[2], B[3])])
 left.BooleanSubtract(poly_rects([BGA_BOX]))
 left.BooleanAdd(poly_rects(cells["3V3_FPGA"]))
 right = poly_rects([(CX, B[1], B[2], B[3]), (136.0, B[1], B[2], 76.0)])
