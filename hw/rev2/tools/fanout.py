@@ -348,7 +348,10 @@ for i in range(-10, 10):
         n = min(vcco, key=lambda v: math.hypot(v[0] - gx, v[1] - gy))[2]
         cells[n].append((CX + gx - PITCH / 2, CY + gy - PITCH / 2, CX + gx + PITCH / 2, CY + gy + PITCH / 2))
 BGA_BOX = (CX - 8.0, CY - 8.0, CX + 8.0, CY + 8.0)
-left = poly_rects([(B[0], 76.0, CX, B[3]), (76.0, 59.5, 93.0, 76.0)])
+# 3V3 parts below the BGA (LED registers, level shifters, FT232 area) are
+# in the 3V3 region up to x = 140 mm; the DUT/platform I/O area further right
+# stays VCC_IO.
+left = poly_rects([(B[0], 76.0, CX, B[3]), (76.0, 59.5, 93.0, 76.0), (CX, CY + 8.6, 140.0, B[3])])
 left.BooleanSubtract(poly_rects([BGA_BOX]))
 left.BooleanAdd(poly_rects(cells["3V3_FPGA"]))
 right = poly_rects([(CX, B[1], B[2], B[3]), (136.0, B[1], B[2], 76.0)])

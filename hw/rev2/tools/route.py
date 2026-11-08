@@ -73,7 +73,22 @@ def add_outer_pours(board):
 def import_(workdir):
     board = pcbnew.LoadBoard(BOARD)
     ses = os.path.join(workdir, "scaffold.ses")
-    if not pcbnew.ImportSpecctraSES(board, ses):
+    # Drop the (placement ...) section: parts do not move, and it lists the
+    # mounting holes under placeholder references (REF**_n) that KiCad cannot
+    # match, which makes the whole import fail.
+    text = open(ses).read()
+    i = text.find("(placement")
+    if i >= 0:
+        depth, j = 0, i
+        while True:
+            depth += {"(": 1, ")": -1}.get(text[j], 0)
+            j += 1
+            if depth == 0:
+                break
+        text = text[:i] + text[j:]
+    clean = os.path.join(workdir, "scaffold-noplacement.ses")
+    open(clean, "w").write(text)
+    if not pcbnew.ImportSpecctraSES(board, clean):
         raise SystemExit("SES import failed")
     for z in outer_pours(board):
         board.Delete(z)

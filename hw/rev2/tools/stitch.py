@@ -25,15 +25,22 @@ GROUP = "rev2_stitch"
 IN3_NETS = {"1V0", "1V8", "3V3_FPGA", "VCC_IO_FPGA", "VPRE", "VIN"}
 CLEAR = 0.2
 
+import sys
+INCREMENTAL = "--incremental" in sys.argv   # keep existing stitching (routes attach to it)
 board = pcbnew.LoadBoard(BOARD)
+group = None
 for g in list(board.Groups()):
     if g.GetName() == GROUP:
+        if INCREMENTAL:
+            group = g
+            continue
         for item in list(g.GetItems()):
             board.Delete(item)
         board.Delete(g)
-group = pcbnew.PCB_GROUP(board)
-group.SetName(GROUP)
-board.Add(group)
+if group is None:
+    group = pcbnew.PCB_GROUP(board)
+    group.SetName(GROUP)
+    board.Add(group)
 pcbnew.ZONE_FILLER(board).Fill(board.Zones())
 
 in3 = {z.GetNetname(): z for z in board.Zones() if z.GetLayer() == pcbnew.In3_Cu}
@@ -163,7 +170,8 @@ for fp in board.GetFootprints():
 
 # Switch nodes: copper zone on the top layer spanning the SW pin and the inductor.
 sw = 0
-for net in ("/U_Power/SW_VPRE", "/U_Power/SW_1V0", "/U_Power/SW_1V8", "/U_Power/SW_3V3_FPGA"):
+SW_NETS = ["/U_Power/SW_VPRE", "/U_Power/SW_1V0", "/U_Power/SW_1V8", "/U_Power/SW_3V3_FPGA"]
+for net in ([] if INCREMENTAL else SW_NETS):
     ni = board.FindNet(net)
     pts = [p for fp in board.GetFootprints() for p in fp.Pads() if p.GetNetname() == net]
     if len(pts) < 2:

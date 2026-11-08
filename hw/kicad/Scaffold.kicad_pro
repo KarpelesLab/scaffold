@@ -588,7 +588,7 @@
         "wire_width": 6,
         "name": "POWER",
         "priority": 0,
-        "track_width": 0.5,
+        "track_width": 0.4,
         "clearance": 0.2,
         "via_diameter": 0.8,
         "via_drill": 0.4
