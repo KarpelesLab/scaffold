@@ -189,13 +189,47 @@ vendor-neutral ones; the Rev 1.x Quartus project is unchanged.
 
 ## 5. PCB
 
-- Stackup (decided): **6 layers**, JLC 1.6 mm, via-in-pad filling included.
-  Layers: L1 signal, L2 GND, L3 signal, L4 power, L5 GND, L6 signal. The
+- Stackup (decided): **6 layers**, JLC 1.6 mm.
+  Layers: L1 signal, L2 GND, L3 signal, L4 power, L5 GND, L6 signal.
+  The under-BGA decoupling capacitors sit on their vias (via-in-pad): order
+  with JLC's epoxy-filled, capped vias (POFV) option. The
   CSG324 is a 0.8 mm-pitch BGA; 6 layers keep two solid ground planes,
   including the one under the analog measurement path.
 - BGA fanout: 0.2 mm drill / 0.4 mm via, 0.1 mm tracks under the BGA
   (JLC multilayer minimum: 0.09 mm track/space, 0.15 mm drill).
 - Board outline, mounting holes, connector, LED and SMA positions unchanged.
+
+### Layout as implemented (scripted, see `hw/rev2/tools/layout.sh`)
+
+Pipeline: `layout_rules.py` (rules, net classes) -> `update_pcb.py` (sync
+with the schematic) -> `place.py` (placement) -> `fanout.py` (BGA fanout,
+decoupling, planes) -> `route.py export` -> Freerouting -> `route.py import`.
+
+- Stackup: Top (signal) / GND1 (plane) / Signal / Power (split plane) /
+  GND2 (plane) / Bottom (signal).
+- Rules: 0.1 mm track/clearance for the BGA nets (classes FPGA_IO,
+  FPGA_PWR, GND), 0.2 mm default, 0.8 mm power tracks; vias 0.4/0.2 mm at the
+  BGA, 0.6/0.3 mm elsewhere. kicad-cli ignores `.kicad_dru` custom rules,
+  so every constraint is expressed through net classes.
+- Placement: everything kept from Rev 1.1 is untouched (connectors,
+  headers J500-J503 for daughter board compatibility, SMA, LEDs, DIP
+  switches, holes). USB-C at the old micro-USB position; PD controller and
+  input mux below it; VPRE/1V8/3V3 bucks in the former logo area; the 1V0
+  buck next to the BGA (short high-current path). BGA rotated 180 degrees so
+  banks 34/35 (DUT/platform I/Os) face the J500-J503 headers.
+- Fanout: dog-bone vias for every power/ground ball and every signal ball
+  from the third ring inwards; the two outer rings escape on the top layer.
+- Decoupling: 0402 capacitors on supply/ground via pairs under the BGA, the
+  others in a ring around it on the side of their plane region; bulk
+  capacitors beyond the ring.
+- Power plane (In3): 1V0 island under the core with a corridor through
+  unused ball rows to its buck; 1V8 strip from the VCCAUX column; 3V3 (left)
+  and VCC_IO (right) split under the BGA by nearest VCCO ball; VPRE and VIN
+  in the power input area.
+- Known DRC items accepted: Rev 1.1 edge-mount SMA connectors (copper at the
+  board edge by design, internal hole/mask clearances), terminal block
+  padstacks, GCT USB4105 land pattern (0.194 mm hole clearance vs 0.2 mm
+  rule).
 
 ## 6. JLCPCB outputs
 

@@ -62,9 +62,9 @@ def main():
         # 0.1 mm clearance for the nets of the BGA dog-bone fanout (vias 0.166 mm
         # from the 0.4 mm balls). kicad-cli ignores .kicad_dru custom rules, so
         # the BGA constraints are expressed through net classes only.
-        cls("FPGA_PWR", 1, 0.4, 0.1, 0.45, 0.2),
+        cls("FPGA_PWR", 1, 0.3, 0.1, 0.45, 0.2),
         cls("GND", 3, 0.4, 0.1, 0.6, 0.3),
-        cls("POWER", 0, 0.8, 0.2, 0.8, 0.4),
+        cls("POWER", 0, 0.5, 0.2, 0.8, 0.4),
     ]
     patterns = [{"netclass": "FPGA_IO", "pattern": n} for n in fpga_io]
     patterns += [{"netclass": "FPGA_PWR", "pattern": n} for n in FPGA_POWER]

@@ -14,4 +14,5 @@ python3 hw/rev2/tools/layout_rules.py "$NET"
 "$KPY" hw/rev2/tools/update_pcb.py "$NET" --strip-copper --layers 6 2>&1 | quiet | grep -E "^(updated|removed)" | cut -c1-120
 "$KPY" hw/rev2/tools/place.py 2>&1 | quiet
 "$KPY" hw/rev2/tools/fanout.py 2>&1 | quiet
+"$KPY" hw/rev2/tools/stitch.py 2>&1 | quiet | cut -c1-160
 rm -f "$NET"

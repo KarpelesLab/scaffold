@@ -550,7 +550,7 @@
         "wire_width": 6,
         "name": "FPGA_PWR",
         "priority": 1,
-        "track_width": 0.4,
+        "track_width": 0.3,
         "clearance": 0.1,
         "via_diameter": 0.45,
         "via_drill": 0.2
@@ -588,7 +588,7 @@
         "wire_width": 6,
         "name": "POWER",
         "priority": 0,
-        "track_width": 0.8,
+        "track_width": 0.5,
         "clearance": 0.2,
         "via_diameter": 0.8,
         "via_drill": 0.4
