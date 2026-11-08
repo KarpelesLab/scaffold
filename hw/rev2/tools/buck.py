@@ -194,6 +194,7 @@ def copper(board, parts, add):
     lout = pad(parts["l"], "2")
     for r in parts["couts"]:
         track([P(lout), P(pad(r, "1"))], 0.8, lout.GetNet())
+    signal_copper(board, parts, add)
     # SW zone: band from pin 5 (over the Cbst SW pad) to the inductor SW pad.
     l1 = pad(parts["l"], "1")
     lb = l1.GetBoundingBox()
@@ -273,3 +274,42 @@ def overlaps(board, refset):
                 if ix > MM(0.01) and iy > MM(0.01):
                     res.append((f.GetReference(), g.GetReference() or "hole", round(T(ix), 2), round(T(iy), 2)))
     return res
+
+
+def signal_copper(board, parts, add):
+    """Feedback divider tracks, and escape vias for EN (pin 2) and PG (pin 7):
+    the area around the regulator is full on the top layer and the In2 VIN
+    zone keeps the router off In2 there, so these leave on the bottom layer."""
+    get = board.FindFootprintByReference
+    ic = get(parts["ic"])
+    origin, theta = ic_frame(ic)
+    pad = lambda ref, n: next(q for q in get(ref).Pads() if q.GetNumber() == n)
+    G = lambda p: pcbnew.VECTOR2I(MM(origin[0] + rot(p, theta)[0]), MM(origin[1] + rot(p, theta)[1]))
+
+    def track(points, net, width=0.15):
+        for a, b in zip(points[:-1], points[1:]):
+            t = pcbnew.PCB_TRACK(board)
+            t.SetStart(a)
+            t.SetEnd(b)
+            t.SetWidth(MM(width))
+            t.SetLayer(pcbnew.F_Cu)
+            t.SetNet(net)
+            add(t)
+
+    def via(p, net):
+        v = pcbnew.PCB_VIA(board)
+        v.SetPosition(G(p))
+        v.SetWidth(MM(0.45))
+        v.SetDrill(MM(0.2))
+        v.SetNet(net)
+        add(v)
+
+    fb = pad(parts["ic"], "8")
+    track([fb.GetPosition(), G((0.74, -1.7)), G((-0.32, -2.6)), pad(parts["rtop"], "2").GetPosition(),
+           pad(parts["rbot"], "1").GetPosition()], fb.GetNet())
+    for n, side in (("2", -1), ("7", 1)):
+        q = pad(parts["ic"], n)
+        if q.GetNetname().startswith("unconnected-") or not q.GetNetname():
+            continue
+        track([q.GetPosition(), G((1.35 * side, -0.25)), G((1.35 * side, -1.7))], q.GetNet())
+        via((1.35 * side, -1.7), q.GetNet())

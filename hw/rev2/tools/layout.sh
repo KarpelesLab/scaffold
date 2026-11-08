@@ -15,4 +15,5 @@ python3 hw/rev2/tools/layout_rules.py "$NET"
 "$KPY" hw/rev2/tools/place.py 2>&1 | quiet
 "$KPY" hw/rev2/tools/fanout.py 2>&1 | quiet
 "$KPY" hw/rev2/tools/stitch.py 2>&1 | quiet | cut -c1-160
+"$KPY" hw/rev2/tools/manual_routes.py 2>&1 | quiet
 rm -f "$NET"
