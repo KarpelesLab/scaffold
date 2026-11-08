@@ -13236,7 +13236,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 229.06 215.9 0)
 			(effects
 				(font
@@ -19976,7 +19976,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 48.72 604.52 0)
 			(effects
 				(font
@@ -20095,7 +20095,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 89.36 604.52 0)
 			(effects
 				(font
@@ -20214,7 +20214,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 130 604.52 0)
 			(effects
 				(font
@@ -20333,7 +20333,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 170.64 604.52 0)
 			(effects
 				(font
@@ -27456,7 +27456,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 394.16 330.2 0)
 			(effects
 				(font
@@ -27525,7 +27525,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 434.8 330.2 0)
 			(effects
 				(font
@@ -27644,7 +27644,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 475.44 330.2 0)
 			(effects
 				(font
@@ -31957,7 +31957,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 394.16 518.16 0)
 			(effects
 				(font
@@ -32026,7 +32026,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 434.8 518.16 0)
 			(effects
 				(font
@@ -32145,7 +32145,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 475.44 518.16 0)
 			(effects
 				(font
@@ -35532,7 +35532,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 384 688.34 0)
 			(effects
 				(font

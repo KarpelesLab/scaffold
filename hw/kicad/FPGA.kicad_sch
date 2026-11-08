@@ -19674,7 +19674,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 698.96 101.6 0)
 			(effects
 				(font
@@ -20008,7 +20008,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 663.4 154.94 0)
 			(effects
 				(font
@@ -20077,7 +20077,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 704.04 154.94 0)
 			(effects
 				(font
@@ -20146,7 +20146,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 744.68 154.94 0)
 			(effects
 				(font
@@ -20215,7 +20215,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 785.32 154.94 0)
 			(effects
 				(font
@@ -20875,7 +20875,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 729.44 213.36 0)
 			(effects
 				(font
@@ -21891,7 +21891,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 721.82 259.08 0)
 			(effects
 				(font
@@ -22520,7 +22520,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 775.16 304.8 0)
 			(effects
 				(font
@@ -22589,7 +22589,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 815.8 304.8 0)
 			(effects
 				(font
@@ -22658,7 +22658,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 856.44 304.8 0)
 			(effects
 				(font
@@ -22727,7 +22727,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 622.76 332.74 0)
 			(effects
 				(font
@@ -22796,7 +22796,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 663.4 332.74 0)
 			(effects
 				(font
@@ -22865,7 +22865,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 704.04 332.74 0)
 			(effects
 				(font
@@ -22934,7 +22934,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 744.68 332.74 0)
 			(effects
 				(font

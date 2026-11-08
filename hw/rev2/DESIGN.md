@@ -204,10 +204,29 @@ vendor-neutral ones; the Rev 1.x Quartus project is unchanged.
 Pipeline: `layout_rules.py` (rules, net classes) -> `update_pcb.py` (sync
 with the schematic) -> `place.py` (placement, bucks from the `buck.py`
 template) -> `fanout.py` (BGA fanout, decoupling, planes) -> `stitch.py`
-(plane vias, buck power copper) -> `route.py export` (prunes dangling routed
-copper, locks existing copper) -> Freerouting -> `route.py import` ->
-`postroute.py` (minimum widths, slivers). Routing is incremental: each pass
-locks what earlier passes routed and only routes what is left.
+(plane vias, buck power copper) -> `manual_routes.py` (J501-J502 bus) ->
+routing. `layout.sh` runs these steps; routing was then done as follows,
+and the board file is the reference (the routing steps are not a one-shot
+script):
+
+1. Freerouting, incremental (`route.py export` locks existing copper and
+   prunes dangling stubs; `route.py import`; `postroute.py` fixes minimum
+   widths and slivers). Five passes took the board from ~500 to 43
+   unconnected; each pass is ~1.5 h and gains less.
+2. `maze.py`, a grid A* router written for the rest (numpy/scipy, runs
+   outside KiCad): `maze_export.py` -> `maze.py` -> `maze_apply.py`.
+   0.05 mm grid aligned on the BGA pitch, top/Signal/bottom layers, net
+   class clearances checked with a grid margin (`MAZE_TIGHT` for fine-pitch
+   escapes, every result verified with KiCad's DRC), connectivity through
+   planes, per-net width/via/neck overrides and flags (outer layers only,
+   extra vias, no vias). `ripup.py` clears a box or whole nets when a pad
+   is boxed in; boxed-in areas were re-routed with the stuck net first.
+3. The 3 A input stage (VBUS_C, VEXT, VIN_MUX: 0.8 mm on the outer 1 oz
+   layers, extra vias at each layer change, 0.35 mm necks at the TPS2121
+   pins) and the DUT/platform supplies (VCC_DUT, VCC_PLATFORM and the
+   PERMANENT nets: 1.5 mm, outer layers) were ripped up and re-routed wide.
+
+Result: 0 unconnected pads, no clearance, short or track-width errors.
 
 - Stackup: Top (signal) / GND1 (plane) / Signal / Power (split plane) /
   GND2 (plane) / Bottom (signal).
@@ -236,10 +255,16 @@ locks what earlier passes routed and only routes what is left.
   nearest VCCO ball; VIN in the power input area; VPRE from its buck to the
   LDO inputs. The buck inputs get 12 V from a VIN zone on the Signal layer
   (In2), which has nothing else to carry in the power area.
-- Known DRC items accepted: Rev 1.1 edge-mount SMA connectors (copper at the
-  board edge by design, internal hole/mask clearances), terminal block
-  padstacks, GCT USB4105 land pattern (0.194 mm hole clearance vs 0.2 mm
-  rule).
+- Known DRC items accepted (95 errors, all footprints): Rev 1.1 edge-mount
+  SMA connectors CN100/CN2xx/CN3xx (copper at the board edge by design,
+  internal hole and mask clearances), GCT USB4105 land pattern J200
+  (0.194 mm hole clearance vs 0.2 mm rule); warnings: terminal block
+  padstacks, silkscreen sizes and library mismatches of the footprints
+  imported from Altium, U100 no-connect net names (unit suffix) and empty
+  Description fields in the schematic parity check.
+- Placement changes made while routing: C224 (mux output cap) above-right
+  of U210, so the 3 A output does not cross the inputs; LED resistors
+  R409-R424 in two rows at 4 mm pitch (2 mm left no room to route).
 
 ## 6. JLCPCB outputs
 
@@ -277,3 +302,19 @@ Points that need a human check (datasheet or tool not available here):
    part.
 7. Vivado synthesis and timing of `fpga-arch/artix7` (no Vivado on the machine
    used for the port: only simulated/elaborated with nvc).
+8. Layout review by a person before ordering: the board was placed and
+   routed by scripts. In particular the buck switching loops (template in
+   `buck.py`), the TPS2121 area (0.35 mm necks into its 0.5 mm-pitch pins),
+   the analog path (ADA4895 area, kept from Rev 1.1 placement) and the
+   routing near the BGA. The routes are electrically complete and pass DRC;
+   they are not as tidy as hand routing (grid steps, some long detours).
+9. Order options: 6 layers, 1 oz outer / 0.5 oz inner, via-in-pad plated
+   over (POFV) for the 0402 decoupling capacitors under the BGA, minimum
+   via 0.4/0.2 mm, minimum track/space 0.1 mm. Inner layer order in the
+   Gerbers: GND1 (.g1), Signal (.g2), Power (.g3), GND2 (.g4).
+10. Outer ground pours: areas enclosed by tracks without a ground via are
+    removed as islands (between the header rows); the two inner ground
+    planes are solid. Optional: add ground vias there to keep the pour.
+11. Low JLCPCB stock at the time of generation (2026-11-09): ADA4895-1 (33),
+    25 MHz oscillator ECS-2520S33-250 (49), XC7A35T (227). Re-check with
+    `hw/rev2/jlc_check.py --bom hw/rev2/jlc/bom-jlc.csv --qty N`.

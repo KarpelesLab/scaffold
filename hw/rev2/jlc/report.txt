@@ -1,0 +1,18 @@
+Scaffold Rev 2 - JLCPCB outputs
+
+Assembled by JLCPCB: 326 parts, 75 BOM lines
+Hand assembly: 50 parts, 7 lines (see hand-assembly.csv)
+Parts without LCSC number nor manufacturer PN: none
+Board sides with assembled parts: Bottom, Top
+
+DRC (errors only):
+** Drc report for scaffold-rev2.kicad_pcb **
+** Created on 2026-11-09T03:06:13 **
+** Report includes: Errors **
+** Found 95 DRC violations **
+** Found 0 unconnected pads **
+** Found 0 Footprint errors **
+** Ignored checks **
+** End of Report **
+
+Check the part rotations in JLCPCB's placement preview before confirming the order.

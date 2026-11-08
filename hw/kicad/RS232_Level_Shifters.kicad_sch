@@ -8137,7 +8137,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 16.51 132.588 0)
 			(hide yes)
 			(show_name no)
@@ -11951,7 +11951,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 26.67 170.688 0)
 			(hide yes)
 			(show_name no)
@@ -12178,7 +12178,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 98.298 129.54 90)
 			(hide yes)
 			(show_name no)
@@ -13772,7 +13772,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "TP"
 			(at 98.298 135.382 90)
 			(hide yes)
 			(show_name no)

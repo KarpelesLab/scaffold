@@ -1,0 +1,8 @@
+Quantity,Designator,Manufacturer PN,Value,Note
+1,S200,25136NAH,30VDC - 4A,APEM slide switch 4A (Mouser/DigiKey)
+1,S100,430152080826,Misc - Button - WURTH 430152080826,Wurth tactile switch (Mouser/DigiKey)
+22,"THP200,THP201,THP202,THP203,THP204,THP205,THP206,THP207,THP208,THP209,THP210,THP300,THP301,THP302,THP303,THP304,THP305,THP306,THP309,THP310,THP311,THP312",6821-0-00-15-00-00-08-0,Misc - Test pin - Through hole - Millmax - 6821-0-00-15-00-00-08-0,Mill-Max test pin (Mouser/DigiKey)
+3,"CN200,CN202,CN204",691213710002,Male,Wurth 2-pole terminal block (Mouser/DigiKey)
+6,"CN201,CN206,CN600,CN601,CN602,CN603",90120-0123,Male,"3-pin 0.1in header, Molex 90120-0123 (40 pcs at JLC: hand-fit or any 1x3 0.1in header)"
+4,"J500,J501,J502,J503",HTSS-110-01-G-D,HTSS-110-01-G-D,"Samtec 2x10 shrouded header, keeps daughter board compatibility (Mouser/DigiKey)"
+13,"CN100,CN205,CN300,CN301,CN302,CN303,CN304,CN305,CN306,CN309,CN310,CN311,CN312",SMA–J–P–H–ST–EM3,SMA - Female,"Samtec SMA-J-P-H-ST-EM3 edge SMA, not stocked by JLC (Mouser/DigiKey)"

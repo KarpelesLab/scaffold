@@ -74,7 +74,8 @@ def main():
     # kicad-cli exports the zone fills saved in the file: refill on a copy
     # next to the project (so that the project rules and libraries apply).
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
-    filled = os.path.join(os.path.dirname(os.path.abspath(a.board)), ".jlc-export.kicad_pcb")
+    # (the copy's name becomes the Gerber file prefix: no leading dot)
+    filled = os.path.join(os.path.dirname(os.path.abspath(a.board)), "scaffold-rev2.kicad_pcb")
     pcbnew.SaveBoard(filled, board)
     shutil.copy(os.path.splitext(a.board)[0] + ".kicad_pro", os.path.splitext(filled)[0] + ".kicad_pro")
     a.board = filled

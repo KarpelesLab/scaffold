@@ -16,3 +16,5 @@ fpga-arch/artix7/.Xil/
 __pycache__/
 *.pyc
 hw/kicad/.jlc-export.*
+hw/kicad/scaffold-rev2.*
+hw/rev2/jlc/gerbers/
