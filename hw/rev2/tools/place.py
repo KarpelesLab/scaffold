@@ -219,6 +219,12 @@ group(["L100", "C170", "C171"], (88.0, 112.0, 96.5, 124.0), bottom=True)
 # the LED rows.
 group(["U401", "U402", "C400", "C401", "C402", "R425"], (113.0, 124.0, 140.0, 147.0))
 group(refs(r"R4(0[1-9]|1\d|2[0-4])"), (84.0, 128.0, 135.0, 147.5), rot=90, bottom=True)
+# The resistors of the U401/U402 chains (R409-R424), packed at 2 mm pitch,
+# left no room to route both ends of each: one row per register, 4 mm pitch,
+# below the first row (the bottom side is free there).
+for row, first in ((136.5, 409), (142.5, 417)):
+    for i in range(8):
+        fps["R%d" % (first + i)].SetPosition(pcbnew.VECTOR2I(MM(104.0 + 4.0 * i), MM(row)))
 
 missing = sorted(to_place - placed - FPGA_DECAPS)
 print("placed %d parts; FPGA decoupling left for fanout.py; not placed: %s" % (len(placed), " ".join(missing)))

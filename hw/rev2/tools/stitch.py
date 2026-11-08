@@ -164,8 +164,9 @@ stitched, skipped = 0, []
 routed = [t for t in board.GetTracks() if t.GetClass() == "PCB_TRACK" and t.m_Uuid.AsString() not in buck_items]
 fanned = {(round(pcbnew.ToMM(p.x), 3), round(pcbnew.ToMM(p.y), 3)) for t in routed for p in (t.GetStart(), t.GetEnd())}
 for fp in board.GetFootprints():
-    if fp.GetReference() == "U100" or "SMA" in fp.GetFPIDAsString():
-        continue      # BGA: fanout.py; edge SMA: ground pads at the board edge, joined by the pours
+    if fp.GetReference() == "U100" or "SAMTEC_SMA" in fp.GetFPIDAsString():
+        continue      # BGA: fanout.py; edge SMA connectors: ground pads at the board edge, joined by the pours
+        # (not "SMA" alone: that also matches the DO-214AC TVS diodes, whose ground needs plane vias)
     for p in fp.Pads():
         net = p.GetNetname()
         if p.GetAttribute() != pcbnew.PAD_ATTRIB_SMD or not (net == "GND" or net in IN3_NETS):
@@ -182,6 +183,12 @@ for fp in board.GetFootprints():
         w = min(0.5 if big else 0.3, 2 * min(hx, hy))
         own = next((b for b in pads if abs((b[0] + b[2]) / 2 - cx) < 1e-3 and abs((b[1] + b[3]) / 2 - cy) < 1e-3), None)
         done = False
+        # large pads of plane nets (TVS diodes, inductor terminals): three vias
+        want = 3 if big and min(hx, hy) > 0.7 else 1
+        have = sum(1 for (vx, vy, _, vn) in vias if vn == net and box_dist(vx, vy, own) < 1.8) if own and INCREMENTAL else 0
+        got = 0
+        if have >= want:
+            continue
         for dist in (rmax + 0.45, rmax + 0.75, rmax + 1.1, rmax + 1.6):
             for k in range(16):
                 a = 2 * math.pi * k / 16
@@ -206,11 +213,13 @@ for fp in board.GetFootprints():
                 vias.append((x, y, vd / 2, net))
                 segments.append((cx, cy, x, y, w / 2, net, layer))
                 stitched += 1
-                done = True
-                break
+                got += 1
+                if have + got >= want:
+                    done = True
+                    break
             if done:
                 break
-        if not done:
+        if not got:
             skipped.append("%s.%s(%s)" % (fp.GetReference(), p.GetNumber(), net))
 
 # VIN ties: vias in the strip where the In2 VIN zone overlaps the In3 VIN region.

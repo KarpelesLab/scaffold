@@ -441,6 +441,18 @@ def route_net(net, out):
               flush=True)
 
 
+if os.environ.get("MAZE_SHORT_FIRST"):
+    # shortest nets first (half perimeter of their pads): short local links
+    # go in before long runs can wall them off
+    def hp(n):
+        ps = pads_by_net.get(n, [])
+        if not ps:
+            return 0
+        xs, ys = [p["x"] for p in ps], [p["y"] for p in ps]
+        return (max(xs) - min(xs)) + (max(ys) - min(ys))
+    order = sorted(range(len(TARGETS)), key=lambda i: (ONLY_SEQ[i] is None, hp(TARGETS[i])))
+    TARGETS = [TARGETS[i] for i in order]
+    ONLY_SEQ = [ONLY_SEQ[i] for i in order]
 out, failed = [], []
 for net, only in zip(TARGETS, ONLY_SEQ):
     if net not in NETS:
