@@ -67,7 +67,33 @@ def export(workdir):
     dsn = os.path.join(workdir, "scaffold.dsn")
     if not pcbnew.ExportSpecctraDSN(board, dsn):
         raise SystemExit("DSN export failed")
-    print("exported", dsn)
+    # Freerouting rejects planes on signal layers (the VIN zone on In2): turn
+    # them into wire keepouts, so that no signal is routed through the zone
+    # (vias may still pass; the zone fills around them after import).
+    text = open(dsn).read()
+    n = 0
+    while True:
+        i = text.find("(plane ", 0)
+        while i >= 0 and not text[i:i + 200].split("(polygon ", 1)[-1].startswith("Signal "):
+            i = text.find("(plane ", i + 1)
+        if i < 0:
+            break
+        j = text.index("(polygon ", i)
+        k = _close(text, i)
+        text = text[:i] + "(wire_keepout " + text[j:_close(text, j)] + ")" + text[k:]
+        n += 1
+    open(dsn, "w").write(text)
+    print("exported", dsn, "- signal-layer planes as keepouts:", n)
+
+
+def _close(text, i):
+    """Index just past the s-expression starting at text[i]."""
+    depth = 0
+    while True:
+        depth += {"(": 1, ")": -1}.get(text[i], 0)
+        i += 1
+        if depth == 0:
+            return i
 
 
 def add_outer_pours(board):
