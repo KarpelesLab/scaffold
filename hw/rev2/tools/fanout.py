@@ -328,12 +328,14 @@ add_zone("1V0", pcbnew.In3_Cu, poly_rects([
     (CX + 2.4, corridor_y0, 115.0, corridor_y1),          # corridor (unused balls)
     (CX - 2.0, CY - 14.6, 134.0, CY - 7.8),               # top decoupling ring + bulk
     (CX + 7.8, CY - 11.2, 134.0, CY - 1.2),               # upper right ring
-    (114.0, 96.0, 134.0, CY - 1.2)]), 10)                 # buck U213/L202
+    (114.0, 96.0, 134.0, CY - 1.2)]), 10, clearance=0.1)  # buck U213/L202
+# (0.1 mm zone clearance, the net-class rule: at 0.15 mm the ground vias
+# interleaved with the supply vias under the BGA cut the strips apart)
 # 1V8: VCCAUX via column (left of the core) up to the top-left ring.
 add_zone("1V8", pcbnew.In3_Cu, poly_rects([
     (CX - 2.9, CY - 7.8, CX - 1.9, CY + 3.4),
     (CX - 11.2, CY - 14.6, CX - 2.0, CY - 7.8),
-    (CX - 11.2, CY - 7.8, CX - 7.8, CY - 5.4)]), 9)
+    (CX - 11.2, CY - 7.8, CX - 7.8, CY - 5.4)]), 9, clearance=0.1)
 # VPRE: from the U211 buck (top row of the power area) to the LDOs.
 add_zone("VPRE", pcbnew.In3_Cu, poly_rects([(93.0, 37.0, 136.0, 76.0), (93.0, 76.0, 121.0, 92.0),
                                              (B[0], 59.5, 94.0, 72.0)]), 5)

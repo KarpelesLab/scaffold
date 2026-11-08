@@ -183,7 +183,11 @@ group(["D203", "D204"], (64.5, 38.6, 76, 41.5), rot=0)
 group(["U209", "C221", "R218", "D207", "R219", "D208", "R220", "R221", "R222", "D209"], R_PD)
 
 # 3. Input mux next to the external input terminal and the ON switch.
-group(["U210", "C222", "D210", "R223", "R224", "R225", "R226", "R227", "R228", "R229", "C223", "C224"],
+# The output cap C224 sits above-right of U210, on the output's way to S200:
+# the TPS2121 outputs (pins 1/8) are above its inputs (2/7), which leave
+# sideways, so a cap below the IC would force the 3 A output to cross them.
+place_at("C224", 70.0, 49.55)
+group(["U210", "C222", "D210", "R223", "R224", "R225", "R226", "R227", "R228", "R229", "C223"],
       (64.5, 50.5, 83.5, 60.0))
 
 # 4. Buck converters: fixed per-regulator template (buck.py) with the input

@@ -117,6 +117,17 @@ def via_free(x, y, r, net):
     return True
 
 
+def seg_seg_dist(a0, a1, b0, b1):
+    return min(seg_dist(a0[0], a0[1], b0[0], b0[1], b1[0], b1[1]), seg_dist(a1[0], a1[1], b0[0], b0[1], b1[0], b1[1]),
+               seg_dist(b0[0], b0[1], a0[0], a0[1], a1[0], a1[1]), seg_dist(b1[0], b1[1], a0[0], a0[1], a1[0], a1[1])) \
+        if not _cross(a0, a1, b0, b1) else 0.0
+
+
+def _cross(p1, p2, p3, p4):
+    d = lambda a, b, c: (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
+    return d(p1, p2, p3) * d(p1, p2, p4) < 0 and d(p3, p4, p1) * d(p3, p4, p2) < 0
+
+
 def track_free(x0, y0, x1, y1, w, net, layer, own_box):
     for t in (0.25, 0.5, 0.75, 1.0):
         x, y = x0 + (x1 - x0) * t, y0 + (y1 - y0) * t
@@ -124,6 +135,13 @@ def track_free(x0, y0, x1, y1, w, net, layer, own_box):
             if b[4] != net and b is not own_box and box_dist(x, y, b) < w / 2 + CLEAR \
                     and (b[5] if layer == pcbnew.F_Cu else b[6]):
                 return False
+    # tracks of other nets on the same layer, and vias of other nets
+    for (sx0, sy0, sx1, sy1, sw, n, sl) in segments:
+        if n != net and sl == layer and seg_seg_dist((x0, y0), (x1, y1), (sx0, sy0), (sx1, sy1)) < w / 2 + sw + CLEAR:
+            return False
+    for (vx, vy, vr, vn) in vias:
+        if vn != net and seg_dist(vx, vy, x0, y0, x1, y1) < w / 2 + vr + CLEAR:
+            return False
     return True
 
 

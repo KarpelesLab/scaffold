@@ -5,8 +5,8 @@
 
 Every copper item with its net, layers and geometry (mm): tracks as
 segments, vias as circles (plus a layer link), pads as polygons per layer
-(plus a layer link for plated holes), holes, zone fills (except ground and
-the outer pours, which refill around new tracks), track keepouts, the board
+(plus a layer link for plated holes), holes, zone fills (the outer ground
+pours excepted: they refill around new tracks), track keepouts, the board
 outline and the net classes.
 """
 import fnmatch
@@ -88,10 +88,14 @@ def main():
             if z.GetDoNotAllowTracks():
                 items.append(dict(n="", L=[nm for _, nm in lay], poly=polys(z.Outline()), keepout=True))
             continue
-        if z.GetNetname() == "GND" or z.GetZoneName() == "GND pour":
-            continue
+        if z.GetZoneName() == "GND pour":
+            continue      # refills around new tracks
+        if z.GetNetname() == "GND":
+            lay = [(l, nm) for l, nm in lay if nm in ("In1", "In4")]   # planes: connectivity only
         for l, nm in lay:
-            items.append(dict(n=z.GetNetname(), L=[nm], poly=polys(z.GetFilledPolysList(l)), zone=True))
+            # one item per fill fragment: a split plane is not one connection
+            for frag in polys(z.GetFilledPolysList(l)):
+                items.append(dict(n=z.GetNetname(), L=[nm], poly=[frag], zone=True))
     outline = pcbnew.SHAPE_POLY_SET()
     b.GetBoardPolygonOutlines(outline, False)
     bb = b.GetBoardEdgesBoundingBox()
