@@ -49,12 +49,23 @@ OUT = sys.argv[2]
 # NET or NET=WIDTH (narrower track for that net, e.g. to leave a fine-pitch pin)
 # NET@REF1,REF2: only join the components holding these parts to the main one
 ARGS = sys.argv[3:]
+# Per argument (a net may appear several times with different settings):
+#   NET[=WIDTH[:VIA_D:VIA_DRILL[:NECK]]][!^+][@REF,REF.PIN]
+#   ! = no vias (stay on one layer); ^ = outer layers only (1 oz copper);
+#   + = up to two extra vias at each layer change (current capacity);
+#   NECK = track width allowed near own pads
 ONLY_SEQ = [set(a.split("@")[1].split(",")) if "@" in a else None for a in ARGS]
 ARGS = [a.split("@")[0] for a in ARGS]
+FLAGS_SEQ = [set(c for c in a.split("=")[-1] if c in "!^+") if "=" in a else set(c for c in a if c in "!^+")
+             for a in ARGS]
+NOVIA_SEQ = ["!" in f for f in FLAGS_SEQ]
+ARGS = [a.rstrip("!^+") for a in ARGS]
 ONLY = {}
 TARGETS = [a.split("=")[0] for a in ARGS]
-# NET=WIDTH or NET=WIDTH:VIA_D:VIA_DRILL
-WIDTH = {a.split("=")[0]: [float(x) for x in a.split("=")[1].split(":")] for a in ARGS if "=" in a}
+OV_SEQ = [[float(x) for x in a.split("=")[1].split(":")] if "=" in a else [] for a in ARGS]
+WIDTH = {}
+NOVIA = set()
+FLAGS = {}
 ox, oy = d["align"]
 bx0, by0, bx1, by1 = d["bbox"]
 GX0 = ox + math.floor((bx0 - ox) / RES) * RES
@@ -330,6 +341,49 @@ def astar(allowed, via_ok, src, tgt, free):
     return None, n
 
 
+def fat_vias(path, free, via_free, nc, net):
+    """Up to two extra vias next to each layer change, joined to it by stubs
+    on both layers (checked against the free maps of both layers)."""
+    extra, taken = [], []
+    vr = nc["vd"] / 2
+    for p0, p1 in zip(path[:-1], path[1:]):
+        k0, k1 = p0 // HW, p1 // HW
+        if k0 == k1:
+            continue
+        j, i = divmod(p1 % HW, W)
+        x0, y0 = to_xy(p1 % HW)
+        got = 0
+        for dist in (nc["vd"] + 0.25, nc["vd"] + 0.5):
+            for a in range(16):
+                ang = 2 * math.pi * a / 16
+                x, y = x0 + dist * math.cos(ang), y0 + dist * math.sin(ang)
+                jj, ii = int(round((y - GY0) / RES)), int(round((x - GX0) / RES))
+                if not (0 <= ii < W and 0 <= jj < H) or not via_free[jj, ii]:
+                    continue
+                if any(math.hypot(x - tx, y - ty) < nc["vd"] + 0.2 for tx, ty in taken):
+                    continue
+                ok = True
+                for t in np.linspace(0, 1, 12):
+                    cj, ci = int(round(j + (jj - j) * t)), int(round(i + (ii - i) * t))
+                    if not (free[k0][cj, ci] and free[k1][cj, ci]) and not (cj == j and ci == i):
+                        ok = False
+                        break
+                if not ok:
+                    continue
+                x, y = round(GX0 + ii * RES, 4), round(GY0 + jj * RES, 4)
+                extra.append(dict(n=net, L=list(ALL), circ=[x, y, vr], link=[x, y], via=[nc["vd"], nc["vdr"]]))
+                for k in (k0, k1):
+                    extra.append(dict(n=net, L=[ROUTE[k]], seg=[x0, y0, x, y, nc["w"]]))
+                taken.append((x, y))
+                got += 1
+                if got >= 2:
+                    break
+            if got >= 2:
+                break
+        taken.append((x0, y0))
+    return extra
+
+
 def to_xy(idx):
     j, i = divmod(idx, W)
     return round(GX0 + i * RES, 4), round(GY0 + j * RES, 4)
@@ -340,7 +394,7 @@ def route_net(net, out):
     ov = WIDTH.get(net, [])
     if ov:
         nc["w"] = ov[0]
-    if len(ov) == 3:
+    if len(ov) >= 3:
         nc["vd"], nc["vdr"] = ov[1], ov[2]
     hw = nc["w"] / 2
     c = max(nc["cl"], 0.1)
@@ -355,11 +409,14 @@ def route_net(net, out):
         dA = np.stack([ndimage.distance_transform_edt(~obstA[k]) * RES for k in range(len(ROUTE))])
         edge_ok = edge_dist >= d["edge_clearance"] + hw + MARGIN
         free = (dB >= hw + c + MARGIN) & (dA >= hw + MARGIN) & edge_ok
-        nhw = min(hw, NECK_W / 2)
+        neck_w = ov[3] if len(ov) > 3 else NECK_W
+        nhw = min(hw, neck_w / 2)
         free_neck = (dB >= nhw + c + MARGIN) & (dA >= nhw + MARGIN) \
             & (edge_dist >= d["edge_clearance"] + nhw + MARGIN)
         via_free = ((dB >= vr + c + MARGIN) & (dA >= vr + MARGIN)).all(axis=0) \
             & (edge_dist >= d["edge_clearance"] + vr + MARGIN)
+        if net in NOVIA:
+            via_free[:] = False
     finally:
         for it in own_items:
             stamp(it, 1)
@@ -381,6 +438,8 @@ def route_net(net, out):
         near = np.stack([ndimage.distance_transform_edt(~padm[k]) * RES <= NECK_R for k in range(len(ROUTE))])
         neck_ok = free_neck & near & ~free
         allowed = free | deep | neck_ok
+        if "^" in FLAGS.get(net, ()):
+            allowed[RI["In2"]] = False
         roots = sorted(comps, key=lambda r: masks[r].sum())
         if net in ONLY:
             main = max(comps, key=lambda r: len(comps[r]))
@@ -418,7 +477,8 @@ def route_net(net, out):
                 x, y = to_xy(p1 % HW)
                 steps.append(("via", x, y))
                 continue
-            wdt = NECK_W if (isneck(p0) or isneck(p1)) and NECK_W < nc["w"] else nc["w"]
+            nw = ov[3] if len(ov) > 3 else NECK_W
+            wdt = nw if (isneck(p0) or isneck(p1)) and nw < nc["w"] else nc["w"]
             (xa, ya), (xb, yb) = to_xy(p0 % HW), to_xy(p1 % HW)
             dirn = (round((xb - xa) / RES), round((yb - ya) / RES))
             last = steps[-1] if steps else None
@@ -433,6 +493,8 @@ def route_net(net, out):
             else:
                 (xa, ya), (xb, yb) = st[4], st[5]
                 new.append(dict(n=net, L=[ROUTE[st[1]]], seg=[xa, ya, xb, yb, st[2]]))
+        if "+" in FLAGS.get(net, ()):
+            new += fat_vias(path, free, via_free, nc, net)
         for it in new:
             by_net[net].append(it)
             stamp(it, 1)
@@ -453,14 +515,22 @@ if os.environ.get("MAZE_SHORT_FIRST"):
     order = sorted(range(len(TARGETS)), key=lambda i: (ONLY_SEQ[i] is None, hp(TARGETS[i])))
     TARGETS = [TARGETS[i] for i in order]
     ONLY_SEQ = [ONLY_SEQ[i] for i in order]
+    OV_SEQ = [OV_SEQ[i] for i in order]
+    NOVIA_SEQ = [NOVIA_SEQ[i] for i in order]
+    FLAGS_SEQ = [FLAGS_SEQ[i] for i in order]
 out, failed = [], []
-for net, only in zip(TARGETS, ONLY_SEQ):
+for net, only, ovr, novia, flg in zip(TARGETS, ONLY_SEQ, OV_SEQ, NOVIA_SEQ, FLAGS_SEQ):
     if net not in NETS:
         print("unknown net", net)
         continue
     ONLY.pop(net, None)
     if only:
         ONLY[net] = only
+    WIDTH[net] = ovr
+    FLAGS[net] = flg
+    NOVIA.discard(net)
+    if novia:
+        NOVIA.add(net)
     print(net, flush=True)
     if not route_net(net, out):
         failed.append(net)

@@ -3,7 +3,7 @@
 and maze.py's, never the scripted fanout, stitching, buck or bus copper)
 crossing the given boxes, then prunes what is left dangling.
 
-  <kicad python> hw/rev2/tools/ripup.py [--stitch] X0 Y0 X1 Y1 [X0 Y0 X1 Y1 ...]   (mm)
+  <kicad python> hw/rev2/tools/ripup.py [--stitch] [--nets N1,N2] [X0 Y0 X1 Y1 ...]   (mm)
 
 Used when a pad is boxed in by earlier routes: rip up around it, route the
 boxed-in net first with maze.py, then re-route the nets that were cut.
@@ -20,7 +20,14 @@ T = pcbnew.ToMM
 STITCH = "--stitch" in sys.argv     # also remove plane vias (re-add with stitch.py --incremental)
 if STITCH:
     PROTECTED = tuple(g for g in PROTECTED if g != "rev2_stitch")
-v = [float(a) for a in sys.argv[1:] if a != "--stitch"]
+# --nets N1,N2: rip up all routed copper of these nets (anywhere)
+NETS = set()
+args = sys.argv[1:]
+if "--nets" in args:
+    i = args.index("--nets")
+    NETS = set(args[i + 1].split(","))
+    del args[i:i + 2]
+v = [float(a) for a in args if a != "--stitch"]
 boxes = [tuple(v[i:i + 4]) for i in range(0, len(v), 4)]
 b = pcbnew.LoadBoard(BOARD)
 keep = set()
@@ -40,7 +47,7 @@ def hits(t):
     return any(x0 <= x <= x1 and y0 <= y <= y1 for (x, y) in pts for (x0, y0, x1, y1) in boxes)
 
 
-cut = [t for t in b.GetTracks() if t.m_Uuid.AsString() not in keep and hits(t)]
+cut = [t for t in b.GetTracks() if t.m_Uuid.AsString() not in keep and (hits(t) or t.GetNetname() in NETS)]
 nets = sorted({t.GetNetname() for t in cut})
 for t in cut:
     b.Delete(t)
