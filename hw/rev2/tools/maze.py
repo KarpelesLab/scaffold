@@ -1,0 +1,408 @@
+#!/usr/bin/env python3
+"""Grid maze router for the connections Freerouting leaves (numpy + scipy;
+runs outside KiCad).
+
+  python3 hw/rev2/tools/maze.py BOARD.json ROUTES.json NET[=WIDTH] [...]
+  (MAZE_RES=0.05 for a finer grid)
+
+BOARD.json comes from maze_export.py; ROUTES.json is applied with
+maze_apply.py. For each net, the copper of the net is rasterised on all six
+layers (0.1 mm grid aligned on the BGA pitch) and split into connected
+components (plated holes and vias join layers, plane fills count). While
+more than one component holds pads, the smallest one is joined to the
+nearest other one by an A* search over the top, Signal (In2) and bottom
+layers with 8-direction moves, a turn penalty and a via cost. Clearances:
+the net class clearance of the routed net against every other copper item,
+and every item's own class clearance, plus a margin for the grid; board
+edge and hole clearances as in the design rules.
+"""
+import heapq
+import json
+import math
+import os
+import sys
+from collections import defaultdict
+
+import numpy as np
+from scipy import ndimage
+
+RES = float(os.environ.get("MAZE_RES", "0.1"))
+# Obstacles are stamped grown by DELTA (half a cell diagonal), so the distance
+# from a cell centre to the nearest stamped centre overestimates the true
+# distance to copper by at most DELTA; a point on a step between two cell
+# centres is at most half a diagonal (0.71 * RES) from one of them.
+MARGIN = 0.71 * RES + 0.71 * RES + 0.01
+ROUTE = ["F", "In2", "B"]
+ALL = ["F", "In1", "In2", "In3", "In4", "B"]
+VIA_COST = 25.0         # cells (2.5 mm)
+TURN = 0.4
+MAX_EXPAND = 6_000_000
+
+d = json.load(open(sys.argv[1]))
+OUT = sys.argv[2]
+# NET or NET=WIDTH (narrower track for that net, e.g. to leave a fine-pitch pin)
+TARGETS = [a.split("=")[0] for a in sys.argv[3:]]
+WIDTH = {a.split("=")[0]: float(a.split("=")[1]) for a in sys.argv[3:] if "=" in a}
+ox, oy = d["align"]
+bx0, by0, bx1, by1 = d["bbox"]
+GX0 = ox + math.floor((bx0 - ox) / RES) * RES
+GY0 = oy + math.floor((by0 - oy) / RES) * RES
+W = int(math.ceil((bx1 - GX0) / RES)) + 1
+H = int(math.ceil((by1 - GY0) / RES)) + 1
+HW = H * W
+NETS = d["nets"]
+
+
+def window(x0, y0, x1, y1):
+    i0, i1 = max(0, int(math.floor((x0 - GX0) / RES))), min(W, int(math.ceil((x1 - GX0) / RES)) + 1)
+    j0, j1 = max(0, int(math.floor((y0 - GY0) / RES))), min(H, int(math.ceil((y1 - GY0) / RES)) + 1)
+    if i0 >= i1 or j0 >= j1:
+        return None
+    return (slice(j0, j1), slice(i0, i1)), GX0 + np.arange(i0, i1) * RES, GY0 + np.arange(j0, j1) * RES
+
+
+def seg_mask(x0, y0, x1, y1, r):
+    w = window(min(x0, x1) - r, min(y0, y1) - r, max(x0, x1) + r, max(y0, y1) + r)
+    if w is None:
+        return None
+    sl, xs, ys = w
+    X, Y = np.meshgrid(xs, ys)
+    dx, dy = x1 - x0, y1 - y0
+    L = dx * dx + dy * dy
+    t = 0 if L == 0 else np.clip(((X - x0) * dx + (Y - y0) * dy) / L, 0, 1)
+    return sl, (X - x0 - t * dx) ** 2 + (Y - y0 - t * dy) ** 2 <= r * r
+
+
+def poly_fill(pl, pad=0.0, exact_r=None):
+    """Cells whose centre is inside the polygon set (even-odd), or, with
+    exact_r, within exact_r of it (exact point-to-edge distance)."""
+    pts = [p for poly in pl for ring in poly for p in ring]
+    if not pts:
+        return None
+    xs_, ys_ = [p[0] for p in pts], [p[1] for p in pts]
+    w = window(min(xs_) - pad - RES, min(ys_) - pad - RES, max(xs_) + pad + RES, max(ys_) + pad + RES)
+    if w is None:
+        return None
+    sl, xs, ys = w
+    wd = len(xs)
+    tog = np.zeros((len(ys), wd + 1), np.int32)
+    for poly in pl:
+        for ring in poly:
+            n = len(ring)
+            for k in range(n):
+                (xa, ya), (xb, yb) = ring[k], ring[(k + 1) % n]
+                if ya == yb:
+                    continue
+                lo, hi = (ya, yb) if ya < yb else (yb, ya)
+                j = np.nonzero((ys >= lo) & (ys < hi))[0]
+                if len(j) == 0:
+                    continue
+                xc = xa + (ys[j] - ya) * (xb - xa) / (yb - ya)
+                col = np.clip(np.ceil((xc - xs[0]) / RES - 1e-9).astype(int), 0, wd)
+                np.add.at(tog, (j, col), 1)
+    inside = (np.cumsum(tog, axis=1)[:, :wd] % 2).astype(bool)
+    if exact_r is None:
+        return sl, inside
+    X, Y = np.meshgrid(xs, ys)
+    best = np.full(inside.shape, np.inf)
+    for poly in pl:
+        for ring in poly:
+            n = len(ring)
+            for k in range(n):
+                (x0, y0), (x1, y1) = ring[k], ring[(k + 1) % n]
+                dx, dy = x1 - x0, y1 - y0
+                L = dx * dx + dy * dy
+                t = 0 if L == 0 else np.clip(((X - x0) * dx + (Y - y0) * dy) / L, 0, 1)
+                np.minimum(best, (X - x0 - t * dx) ** 2 + (Y - y0 - t * dy) ** 2, out=best)
+    return sl, inside | (best <= exact_r * exact_r)
+
+
+_poly_cache = {}
+DELTA = 0.71 * RES      # obstacles are stamped grown by half a cell diagonal (see route_net)
+
+
+def item_mask(it, infl):
+    if "seg" in it:
+        x0, y0, x1, y1, w = it["seg"]
+        return seg_mask(x0, y0, x1, y1, w / 2 + infl)
+    if "circ" in it:
+        x, y, r = it["circ"]
+        return seg_mask(x, y, x, y, r + infl)
+    if "poly" in it:
+        key = (id(it), infl)
+        if key not in _poly_cache:
+            if it.get("zone"):
+                # large fills: raster, grown conservatively by one extra cell
+                m = poly_fill(it["poly"], infl + RES)
+                if m is not None and infl > 0:
+                    m = (m[0], ndimage.distance_transform_edt(~m[1]) * RES <= infl + RES)
+            else:
+                m = poly_fill(it["poly"], infl, exact_r=infl) if infl > 0 else poly_fill(it["poly"])
+            _poly_cache[key] = m
+        return _poly_cache[key]
+    return None
+
+
+def clearance(it):
+    if it.get("keepout"):
+        return 0.0
+    cl = NETS[it["n"]]["cl"] if it["n"] in NETS else 0.15
+    return max(cl, d["hole_clearance"]) if it.get("hole") else cl
+
+
+def copper(it):
+    return "seg" in it or "circ" in it or "poly" in it
+
+
+RI = {l: k for k, l in enumerate(ROUTE)}
+Bc = np.zeros((len(ROUTE), H, W), np.int16)     # copper (and holes, keepouts)
+Ac = np.zeros((len(ROUTE), H, W), np.int16)     # copper grown by its own clearance
+by_net = defaultdict(list)
+
+
+def stamp(it, s):
+    if not copper(it):
+        return
+    lay = [RI[l] for l in it["L"] if l in RI]
+    if not lay:
+        return
+    for arr, infl in ((Bc, DELTA), (Ac, clearance(it) + DELTA)):
+        m = item_mask(it, infl)
+        if m is None:
+            continue
+        sl, mk = m
+        for k in lay:
+            arr[k][sl] += s * mk
+
+
+for it in d["items"]:
+    by_net[it["n"]].append(it)
+    stamp(it, 1)
+inside = poly_fill(d["outline"])
+board = np.zeros((H, W), bool)
+board[inside[0]] = inside[1]
+edge_dist = ndimage.distance_transform_edt(board) * RES
+pads_by_net = defaultdict(list)
+for p in d["pads"]:
+    pads_by_net[p["n"]].append(p)
+print("grid %dx%d, %d items" % (W, H, len(d["items"])), flush=True)
+
+
+def cell(x, y):
+    return int(round((y - GY0) / RES)), int(round((x - GX0) / RES))
+
+
+def components(net):
+    own = np.zeros((len(ALL), H, W), bool)
+    for it in by_net[net]:
+        if not copper(it) or it.get("hole") and not it["n"]:
+            continue
+        m = item_mask(it, 0.0)
+        if m is None:
+            continue
+        for l in it["L"]:
+            own[ALL.index(l)][m[0]] |= m[1]
+    labs = []
+    for k in range(len(ALL)):
+        lab, _ = ndimage.label(own[k], structure=np.ones((3, 3), int))
+        labs.append(lab)
+    parent = {}
+
+    def find(a):
+        while parent.get(a, a) != a:
+            parent[a] = parent.get(parent[a], parent[a])
+            a = parent[a]
+        return a
+
+    def union(a, b):
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[ra] = rb
+    for it in by_net[net]:
+        if "link" not in it:
+            continue
+        j, i = cell(*it["link"])
+        nodes = [(ALL.index(l), int(labs[ALL.index(l)][j, i])) for l in it["L"]]
+        nodes = [n for n in nodes if n[1] > 0]
+        for a in nodes[1:]:
+            union(nodes[0], a)
+    comps = defaultdict(list)
+    for p in pads_by_net[net]:
+        k = ALL.index(p["L"])
+        j, i = cell(p["x"], p["y"])
+        lab = int(labs[k][j, i])
+        if lab == 0:          # pad smaller than a cell around its centre: nearest own cell
+            continue
+        comps[find((k, lab))].append(p["ref"])
+    groups = defaultdict(set)
+    for k in range(len(ALL)):
+        for lab in range(1, int(labs[k].max()) + 1):
+            groups[find((k, lab))].add((k, lab))
+    masks = {}
+    for root in comps:
+        mk = np.zeros((len(ROUTE), H, W), bool)
+        for (k, lab) in groups[root]:
+            if ALL[k] in RI:
+                mk[RI[ALL[k]]] |= labs[k] == lab
+        masks[root] = mk
+    return comps, masks, own
+
+
+DIRS = [(1, 0, 1.0, 0), (-1, 0, 1.0, 1), (0, 1, 1.0, 2), (0, -1, 1.0, 3),
+        (1, 1, 1.4142, 4), (1, -1, 1.4142, 5), (-1, 1, 1.4142, 6), (-1, -1, 1.4142, 7)]
+
+
+def astar(allowed, via_ok, src, tgt, free):
+    A = [a.ravel().tobytes() for a in allowed]
+    FR = [f.ravel().tobytes() for f in free]
+    V = via_ok.ravel().tobytes()
+    TG = [t.ravel().tobytes() for t in tgt]
+    jj, ii = np.nonzero(tgt.any(axis=0))
+    ti0, ti1, tj0, tj1 = ii.min(), ii.max(), jj.min(), jj.max()
+
+    def h(idx):
+        j, i = divmod(idx, W)
+        dx = max(ti0 - i, 0, i - ti1)
+        dy = max(tj0 - j, 0, j - tj1)
+        return max(dx, dy) + 0.4142 * min(dx, dy)
+    g, par, dirn, heap = {}, {}, {}, []
+    for k in range(len(ROUTE)):
+        for idx in np.flatnonzero(src[k] & allowed[k]):
+            key = k * HW + int(idx)
+            g[key] = 0.0
+            heapq.heappush(heap, (h(int(idx)), 0.0, key))
+    n = 0
+    while heap:
+        f, gc, key = heapq.heappop(heap)
+        if gc > g.get(key, 1e18):
+            continue
+        k, idx = divmod(key, HW)
+        if TG[k][idx]:
+            path = [key]
+            while path[-1] in par:
+                path.append(par[path[-1]])
+            return path[::-1], n
+        n += 1
+        if n > MAX_EXPAND:
+            return None, n
+        j, i = divmod(idx, W)
+        pd = dirn.get(key)
+        straight_only = not FR[k][idx]    # inside own copper only: no diagonal exit (corner clearance)
+        for di, dj, c, code in DIRS:
+            if straight_only and code >= 4:
+                continue
+            ni, nj = i + di, j + dj
+            if not (0 <= ni < W and 0 <= nj < H):
+                continue
+            nidx = nj * W + ni
+            if not A[k][nidx]:
+                continue
+            nk = k * HW + nidx
+            ng = gc + c + (TURN if pd is not None and pd != code else 0.0)
+            if ng < g.get(nk, 1e18):
+                g[nk], par[nk], dirn[nk] = ng, key, code
+                heapq.heappush(heap, (ng + h(nidx), ng, nk))
+        if V[idx]:
+            for k2 in range(len(ROUTE)):
+                if k2 != k and A[k2][idx]:
+                    nk = k2 * HW + idx
+                    ng = gc + VIA_COST
+                    if ng < g.get(nk, 1e18):
+                        g[nk], par[nk], dirn[nk] = ng, key, None
+                        heapq.heappush(heap, (ng + h(idx), ng, nk))
+    return None, n
+
+
+def to_xy(idx):
+    j, i = divmod(idx, W)
+    return round(GX0 + i * RES, 4), round(GY0 + j * RES, 4)
+
+
+def route_net(net, out):
+    nc = dict(NETS[net])
+    nc["w"] = WIDTH.get(net, nc["w"])
+    hw = nc["w"] / 2
+    c = max(nc["cl"], 0.1)
+    vr = nc["vd"] / 2
+    own_items = [it for it in by_net[net] if copper(it)]
+    for it in own_items:
+        stamp(it, -1)               # the net's own copper is not an obstacle
+    try:
+        obstB = Bc > 0
+        obstA = Ac > 0
+        dB = np.stack([ndimage.distance_transform_edt(~obstB[k]) * RES for k in range(len(ROUTE))])
+        dA = np.stack([ndimage.distance_transform_edt(~obstA[k]) * RES for k in range(len(ROUTE))])
+        edge_ok = edge_dist >= d["edge_clearance"] + hw + MARGIN
+        free = (dB >= hw + c + MARGIN) & (dA >= hw + MARGIN) & edge_ok
+        via_free = ((dB >= vr + c + MARGIN) & (dA >= vr + MARGIN)).all(axis=0) \
+            & (edge_dist >= d["edge_clearance"] + vr + MARGIN)
+    finally:
+        for it in own_items:
+            stamp(it, 1)
+    fails = 0
+    while True:
+        comps, masks, own = components(net)
+        if len(comps) <= 1:
+            return True
+        own_route = np.stack([own[ALL.index(l)] for l in ROUTE])
+        deep = np.stack([ndimage.distance_transform_edt(own_route[k]) * RES >= hw for k in range(len(ROUTE))])
+        allowed = free | deep
+        roots = sorted(comps, key=lambda r: masks[r].sum())
+        src = roots[0]
+        sj, si = np.nonzero(masks[src].any(axis=0))
+
+        def gap(r):
+            jj, ii = np.nonzero(masks[r].any(axis=0))
+            dx = max(ii.min() - si.max(), si.min() - ii.max(), 0)
+            dy = max(jj.min() - sj.max(), sj.min() - jj.max(), 0)
+            return math.hypot(dx, dy)
+        tgt = min(roots[1:], key=gap)
+        path, n = astar(allowed, via_free, masks[src], masks[tgt], free)
+        if path is None:
+            print("  %s: no route %s -> %s (%d expanded)" % (net, comps[src][:3], comps[tgt][:3], n), flush=True)
+            return False
+        # trim to the part outside the two components
+        layer = lambda key: key // HW
+        inside_src = [masks[src][layer(kk)].ravel()[kk % HW] for kk in path]
+        start = max(i for i, v in enumerate(inside_src) if v)
+        end = next(i for i in range(start, len(path)) if masks[tgt][layer(path[i])].ravel()[path[i] % HW])
+        path = path[start:end + 1]
+        new = []
+        run = [path[0]]
+        for kk in path[1:] + [None]:
+            if kk is not None and layer(kk) == layer(run[-1]):
+                run.append(kk)
+                continue
+            # straight-line runs on one layer
+            pts = [to_xy(x % HW) for x in run]
+            simp = [pts[0]]
+            for a, b2 in zip(pts[1:-1], pts[2:]):
+                p0 = simp[-1]
+                if abs((a[0] - p0[0]) * (b2[1] - a[1]) - (a[1] - p0[1]) * (b2[0] - a[0])) > 1e-6:
+                    simp.append(a)
+            if len(pts) > 1:
+                simp.append(pts[-1])
+            for a, b2 in zip(simp[:-1], simp[1:]):
+                new.append(dict(n=net, L=[ROUTE[layer(run[0])]], seg=[a[0], a[1], b2[0], b2[1], nc["w"]]))
+            if kk is not None:
+                x, y = to_xy(kk % HW)
+                new.append(dict(n=net, L=list(ALL), circ=[x, y, vr], link=[x, y], via=[nc["vd"], nc["vdr"]]))
+            run = [kk]
+        for it in new:
+            by_net[net].append(it)
+            stamp(it, 1)
+            out.append(it)
+        print("  %s: joined %s -> %s, %d items, %d expanded" % (net, comps[src][:2], comps[tgt][:2], len(new), n),
+              flush=True)
+
+
+out, failed = [], []
+for net in TARGETS:
+    if net not in NETS:
+        print("unknown net", net)
+        continue
+    print(net, flush=True)
+    if not route_net(net, out):
+        failed.append(net)
+json.dump(dict(items=out, failed=failed), open(OUT, "w"))
+print("routed items: %d; nets not completed: %s" % (len(out), " ".join(failed) or "none"))

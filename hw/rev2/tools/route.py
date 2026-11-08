@@ -27,7 +27,7 @@ def outer_pours(board):
     return [z for z in board.Zones() if z.GetZoneName() == POUR_NAME]
 
 
-SCRIPTED = ("rev2_fanout", "rev2_stitch", "rev2_buck", "rev2_manual")
+SCRIPTED = ("rev2_fanout", "rev2_stitch", "rev2_buck", "rev2_manual", "rev2_maze")
 
 
 def prune(board):
