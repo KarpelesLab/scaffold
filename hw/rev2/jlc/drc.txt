@@ -1,5 +1,5 @@
 ** Drc report for scaffold-rev2.kicad_pcb **
-** Created on 2026-11-09T03:06:13 **
+** Created on 2026-11-09T11:22:02 **
 ** Report includes: Errors **
 
 ** Found 95 DRC violations **
@@ -21,44 +21,36 @@
     @(220.6911 mm, 173.2976 mm): NPTH pad of CN306
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
     Rule: board setup constraints hole; error
-    @(77.4081 mm, 176.3206 mm): Pad 3 [GND] of CN311 on Top
-    @(76.3111 mm, 173.2976 mm): NPTH pad of CN311
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(68.5941 mm, 176.3205 mm): Pad 2 [GND] of CN311 on Top
-    @(69.6911 mm, 173.2976 mm): NPTH pad of CN311
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
     @(203.5941 mm, 176.3205 mm): Pad 2 [GND] of CN305 on Top
     @(204.6911 mm, 173.2976 mm): NPTH pad of CN305
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(212.4081 mm, 176.3206 mm): Pad 3 [GND] of CN305 on Top
-    @(211.3111 mm, 173.2976 mm): NPTH pad of CN305
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
     Rule: board setup constraints hole; error
     @(54.6841 mm, 122.4006 mm): Pad 3 [GND] of CN100 on Top
     @(57.7071 mm, 121.3036 mm): NPTH pad of CN100
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
     Rule: board setup constraints hole; error
-    @(54.6842 mm, 113.5866 mm): Pad 2 [GND] of CN100 on Top
-    @(57.7071 mm, 114.6836 mm): NPTH pad of CN100
+    @(212.4081 mm, 176.3206 mm): Pad 3 [GND] of CN305 on Top
+    @(211.3111 mm, 173.2976 mm): NPTH pad of CN305
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
     Rule: board setup constraints hole; error
     @(100.5941 mm, 176.3205 mm): Pad 2 [GND] of CN309 on Top
     @(101.6911 mm, 173.2976 mm): NPTH pad of CN309
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
     Rule: board setup constraints hole; error
+    @(77.4081 mm, 176.3206 mm): Pad 3 [GND] of CN311 on Top
+    @(76.3111 mm, 173.2976 mm): NPTH pad of CN311
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(54.6842 mm, 113.5866 mm): Pad 2 [GND] of CN100 on Top
+    @(57.7071 mm, 114.6836 mm): NPTH pad of CN100
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(68.5941 mm, 176.3205 mm): Pad 2 [GND] of CN311 on Top
+    @(69.6911 mm, 173.2976 mm): NPTH pad of CN311
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
     @(109.4081 mm, 176.3206 mm): Pad 3 [GND] of CN309 on Top
     @(108.3111 mm, 173.2976 mm): NPTH pad of CN309
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(242.3180 mm, 147.3606 mm): Pad 2 [GND] of CN205 on Top
-    @(239.2951 mm, 146.2636 mm): NPTH pad of CN205
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(242.3181 mm, 138.5466 mm): Pad 3 [GND] of CN205 on Top
-    @(239.2951 mm, 139.6436 mm): NPTH pad of CN205
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
     Rule: board setup constraints hole; error
     @(155.5941 mm, 176.3205 mm): Pad 2 [GND] of CN302 on Top
@@ -67,38 +59,6 @@
     Rule: board setup constraints hole; error
     @(164.4081 mm, 176.3206 mm): Pad 3 [GND] of CN302 on Top
     @(163.3111 mm, 173.2976 mm): NPTH pad of CN302
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(139.5941 mm, 176.3205 mm): Pad 2 [GND] of CN301 on Top
-    @(140.6911 mm, 173.2976 mm): NPTH pad of CN301
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(148.4081 mm, 176.3206 mm): Pad 3 [GND] of CN301 on Top
-    @(147.3111 mm, 173.2976 mm): NPTH pad of CN301
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(54.6841 mm, 147.3606 mm): Pad 3 [GND] of CN300 on Top
-    @(57.7071 mm, 146.2636 mm): NPTH pad of CN300
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(54.6842 mm, 138.5466 mm): Pad 2 [GND] of CN300 on Top
-    @(57.7071 mm, 139.6436 mm): NPTH pad of CN300
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(84.5941 mm, 176.3205 mm): Pad 2 [GND] of CN312 on Top
-    @(85.6911 mm, 173.2976 mm): NPTH pad of CN312
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(93.4081 mm, 176.3206 mm): Pad 3 [GND] of CN312 on Top
-    @(92.3111 mm, 173.2976 mm): NPTH pad of CN312
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(171.5941 mm, 176.3205 mm): Pad 2 [GND] of CN303 on Top
-    @(172.6911 mm, 173.2976 mm): NPTH pad of CN303
-[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
-    Rule: board setup constraints hole; error
-    @(180.4081 mm, 176.3206 mm): Pad 3 [GND] of CN303 on Top
-    @(179.3111 mm, 173.2976 mm): NPTH pad of CN303
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
     Rule: board setup constraints hole; error
     @(187.5941 mm, 176.3205 mm): Pad 2 [GND] of CN304 on Top
@@ -117,12 +77,52 @@
     @(195.3111 mm, 173.2976 mm): NPTH pad of CN304
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1944 mm)
     Rule: board setup constraints hole; error
-    @(66.9000 mm, 37.3550 mm): Pad B1 [GND] of J200 on Top
+    @(66.9000 mm, 37.3550 mm): Pad A12 [GND] of J200 on Top
     @(67.2100 mm, 36.2800 mm): NPTH pad of J200
 [hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1944 mm)
     Rule: board setup constraints hole; error
-    @(66.9000 mm, 37.3550 mm): Pad A12 [GND] of J200 on Top
+    @(66.9000 mm, 37.3550 mm): Pad B1 [GND] of J200 on Top
     @(67.2100 mm, 36.2800 mm): NPTH pad of J200
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(171.5941 mm, 176.3205 mm): Pad 2 [GND] of CN303 on Top
+    @(172.6911 mm, 173.2976 mm): NPTH pad of CN303
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(180.4081 mm, 176.3206 mm): Pad 3 [GND] of CN303 on Top
+    @(179.3111 mm, 173.2976 mm): NPTH pad of CN303
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(139.5941 mm, 176.3205 mm): Pad 2 [GND] of CN301 on Top
+    @(140.6911 mm, 173.2976 mm): NPTH pad of CN301
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(84.5941 mm, 176.3205 mm): Pad 2 [GND] of CN312 on Top
+    @(85.6911 mm, 173.2976 mm): NPTH pad of CN312
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(54.6841 mm, 147.3606 mm): Pad 3 [GND] of CN300 on Top
+    @(57.7071 mm, 146.2636 mm): NPTH pad of CN300
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(93.4081 mm, 176.3206 mm): Pad 3 [GND] of CN312 on Top
+    @(92.3111 mm, 173.2976 mm): NPTH pad of CN312
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(148.4081 mm, 176.3206 mm): Pad 3 [GND] of CN301 on Top
+    @(147.3111 mm, 173.2976 mm): NPTH pad of CN301
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(54.6842 mm, 138.5466 mm): Pad 2 [GND] of CN300 on Top
+    @(57.7071 mm, 139.6436 mm): NPTH pad of CN300
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(242.3180 mm, 147.3606 mm): Pad 2 [GND] of CN205 on Top
+    @(239.2951 mm, 146.2636 mm): NPTH pad of CN205
+[hole_clearance]: Hole clearance violation (board setup constraints hole clearance 0.2000 mm; actual 0.1040 mm)
+    Rule: board setup constraints hole; error
+    @(242.3181 mm, 138.5466 mm): Pad 3 [GND] of CN205 on Top
+    @(239.2951 mm, 139.6436 mm): NPTH pad of CN205
 [copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.2550 mm)
     Rule: board setup constraints edge; error
     @(117.9554 mm, 172.9976 mm): Segment on Edge.Cuts
@@ -313,6 +313,14 @@
     @(228.4081 mm, 176.3206 mm): Pad 3 [GND] of CN306 on Top
 [solder_mask_bridge]: Front solder mask aperture bridges items with different nets
     Rule: board setup solder mask min width; error
+    @(57.7071 mm, 139.6436 mm): NPTH pad of CN300
+    @(54.6842 mm, 138.5466 mm): Pad 2 [GND] of CN300 on Top
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(57.7071 mm, 146.2636 mm): NPTH pad of CN300
+    @(54.6841 mm, 147.3606 mm): Pad 3 [GND] of CN300 on Top
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
     @(69.6911 mm, 173.2976 mm): NPTH pad of CN311
     @(68.5941 mm, 176.3205 mm): Pad 2 [GND] of CN311 on Top
 [solder_mask_bridge]: Front solder mask aperture bridges items with different nets
@@ -327,14 +335,6 @@
     Rule: board setup solder mask min width; error
     @(211.3111 mm, 173.2976 mm): NPTH pad of CN305
     @(212.4081 mm, 176.3206 mm): Pad 3 [GND] of CN305 on Top
-[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
-    Rule: board setup solder mask min width; error
-    @(57.7071 mm, 139.6436 mm): NPTH pad of CN300
-    @(54.6842 mm, 138.5466 mm): Pad 2 [GND] of CN300 on Top
-[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
-    Rule: board setup solder mask min width; error
-    @(57.7071 mm, 146.2636 mm): NPTH pad of CN300
-    @(54.6841 mm, 147.3606 mm): Pad 3 [GND] of CN300 on Top
 [solder_mask_bridge]: Front solder mask aperture bridges items with different nets
     Rule: board setup solder mask min width; error
     @(57.7071 mm, 114.6836 mm): NPTH pad of CN100

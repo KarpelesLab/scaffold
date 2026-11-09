@@ -1,0 +1,39 @@
+openEMS results (GPU engine, JLC06161H-2116 stackup, copper exported from the board on 2026-11-09)
+
+1. CLK_EXT launch: CN100 pad, port In1->Top at the SMA pin, line runs into the absorber (box 58..72 x 114..121)
+f   100.0 MHz  Zin   75.523   -8.707j  S11 -13.38 dB
+f  1000.0 MHz  Zin   61.416  -17.305j  S11 -14.71 dB
+
+2. CLK_EXT via transition into the BGA: port 1 mid-line at x=87 (sees the line both ways, ~Z0/2), port 2 at ball G16 (box 85..103 x 113..121)
+f   100.0 MHz  Zin   33.477   +1.095j  S11 -14.05 dB  S21  -2.10 dB
+f   250.0 MHz  Zin   33.552   +3.026j  S11 -13.98 dB  S21  -2.35 dB
+f   500.0 MHz  Zin   34.909   +6.303j  S11 -14.33 dB  S21  -2.61 dB
+f  1000.0 MHz  Zin   40.481  +10.238j  S11 -16.28 dB  S21  -3.17 dB
+f  2000.0 MHz  Zin   50.638   +4.490j  S11 -26.93 dB  S21  -3.94 dB
+f  3000.0 MHz  Zin   43.558   -5.175j  S11 -21.09 dB  S21  -3.52 dB
+f  4000.0 MHz  Zin   30.777   +1.909j  S11 -12.43 dB  S21  -2.72 dB
+
+3. U211 (VPRE buck) input loop: 1 ohm port across pins 3/4, C226 and C225 shorted (PEC). L = X / (2 pi f)
+f    50.0 MHz  Zin    0.026   +0.356j  S11  -0.40 dB   L = 1.13 nH
+f   100.0 MHz  Zin    0.075   +0.646j  S11  -0.92 dB   L = 1.03 nH
+f   200.0 MHz  Zin    0.051   +1.197j  S11  -0.36 dB   L = 0.95 nH
+f   300.0 MHz  Zin   -0.054   +1.775j  S11   0.23 dB   L = 0.94 nH
+f   500.0 MHz  Zin   -0.352   +3.053j  S11   0.59 dB   L = 0.97 nH
+
+4. CN205 (shunt output SMA) to R206: port 1 SMA pin to ground leg, port 2 at R206.2 (bottom). Before / after the ground vias in the SMA legs
+   before:
+f    97.5 MHz  Zin   50.248   +3.971j  S11 -28.03 dB  S21  -0.19 dB
+f   300.0 MHz  Zin   50.697   +9.573j  S11 -20.46 dB  S21  -0.31 dB
+f   502.5 MHz  Zin   49.754  +15.399j  S11 -16.33 dB  S21  -0.44 dB
+f   997.5 MHz  Zin   45.251  +32.496j  S11  -9.73 dB  S21  -1.01 dB
+f  1500.0 MHz  Zin   40.427  +54.193j  S11  -5.65 dB  S21  -2.12 dB
+f  2002.5 MHz  Zin   37.869  +79.365j  S11  -3.37 dB  S21  -3.69 dB
+f  3000.0 MHz  Zin   42.478 +135.186j  S11  -1.65 dB  S21  -6.58 dB
+   after:
+f    97.5 MHz  Zin   49.996   +3.445j  S11 -29.26 dB  S21  -0.17 dB
+f   300.0 MHz  Zin   49.874   +8.586j  S11 -21.34 dB  S21  -0.25 dB
+f   502.5 MHz  Zin   48.452  +14.323j  S11 -16.78 dB  S21  -0.33 dB
+f   997.5 MHz  Zin   43.428  +31.688j  S11  -9.68 dB  S21  -0.82 dB
+f  1500.0 MHz  Zin   38.763  +53.543j  S11  -5.55 dB  S21  -1.87 dB
+f  2002.5 MHz  Zin   36.502  +78.441j  S11  -3.33 dB  S21  -3.37 dB
+f  3000.0 MHz  Zin   41.138 +132.937j  S11  -1.65 dB  S21  -6.22 dB

@@ -226,10 +226,19 @@ script):
    pins) and the DUT/platform supplies (VCC_DUT, VCC_PLATFORM and the
    PERMANENT nets: 1.5 mm, outer layers) were ripped up and re-routed wide.
 
+4. Post-route copper (review of 2026-11-09, section 8): `thermal.py`
+   (vias in the LDO ground tabs and in the SMA ground legs, group
+   `rev2_thermal`) and `widen.py` (power tracks widened where they clear,
+   extra vias and parallel links, group `rev2_power`).
+
 Result: 0 unconnected pads, no clearance, short or track-width errors.
 
 - Stackup: Top (signal) / GND1 (plane) / Signal / Power (split plane) /
-  GND2 (plane) / Bottom (signal).
+  GND2 (plane) / Bottom (signal). The board file carries JLC's
+  JLC06161H-2116 build (1.6 mm): 35 um outer / 15.2 um inner copper;
+  dielectrics 0.2234 mm (2116+2313, er 4.1), 0.3 mm core (4.6), 0.4168 mm
+  (2 x 7628, 4.4), 0.3 mm core, 0.2234 mm. Select this stackup when
+  ordering if impedance matters (see section 8).
 - Rules: 0.1 mm track/clearance for the BGA nets (classes FPGA_IO,
   FPGA_PWR, GND), 0.2 mm default, 0.8 mm power tracks; vias 0.4/0.2 mm at the
   BGA, 0.6/0.3 mm elsewhere. kicad-cli ignores `.kicad_dru` custom rules,
@@ -318,3 +327,39 @@ Points that need a human check (datasheet or tool not available here):
 11. Low JLCPCB stock at the time of generation (2026-11-09): ADA4895-1 (33),
     25 MHz oscillator ECS-2520S33-250 (49), XC7A35T (227). Re-check with
     `hw/rev2/jlc_check.py --bom hw/rev2/jlc/bom-jlc.csv --qty N`.
+12. VEXT (external input) passes through one 0.4 mm via at (79.0, 53.5)
+    next to R225: fine at 12 V (about 2 A), marginal at the 4 A worst
+    case (7 V input, full load). No room for a second via on the top
+    layer there without moving R223/R225.
+
+## 8. Layout review and simulation (2026-11-09)
+
+Tools in `hw/rev2/sim/` (`run.sh` runs everything; results in
+`hw/rev2/sim/results/`):
+
+- `export_copper.py` (KiCad Python): copper of chosen nets, or of every net
+  in a box, as polygons per layer with vias, holes and pads.
+- `irdrop.py`: DC drop and current density of each power net (resistor
+  network on a 0.05/0.1 mm raster, via barrels, worst-case load currents).
+- `em_sim.py`: openEMS FDTD model of a box of the real copper (stackup
+  above, PEC copper, vias as cylinders, lumped ports, PML). openEMS is
+  built from source (`openEMS-Project`, `update_openEMS.sh --python`, needs
+  `brew install hdf5 cgal boost`) into `~/opt/openEMS`; its Metal GPU
+  engine runs these models about 50x faster than the CPU engine.
+  Modelling rules learned the hard way: the copper must run into the PML
+  (a track ending at the absorber is an open stub) and vias must stay out
+  of it (vertical conductors in the PML make the run unstable).
+
+Findings and changes:
+
+| Check | Result | Action |
+|---|---|---|
+| DC drop, all power nets, worst case | Largest: VEXT 4 A 123 mV (was 151), VIN_MUX 55 mV, VCC_DUT 57 mV and VCC_PLATFORM 47 mV at 1.5 A, 1V0 24 mV at 2 A, 1V8 24 mV, VCC_IO 7 mV, 3V3 2 mV | VEXT/VIN_MUX/VBUS widened to 1-2 mm where they clear, parallel VEXT links beside the TPS2121 (`widen.py`) |
+| Current density | Hot spots only at the TPS2121 pin necks (package-limited) and pad entries; VBUS trunk 0.8 mm beside the mounting hole (3 A, ~20 C rise per IPC-2152) | Noted |
+| Return paths | No signal segment runs more than 1.5 mm without its reference plane below (crossings are via antipads under the BGA) | None |
+| SMA connectors (13) | Ground legs had no via: the shield current reached the planes only through the top pour | 7 vias in each ground leg (`thermal.py`). CN205 shunt output: S21 at 1 GHz -1.01 -> -0.82 dB, at 2 GHz -3.69 -> -3.37 dB; the rest is the THP200 test-pin hole in the path (as Rev 1.1) |
+| LDO tabs (TL1963A) | No via under the ground tab | 0.3 mm via grid in the tabs of U200 (4), U202 (6), U205 (6); U212 has In2 tracks under it (0.2 W, not needed) |
+| CLK_EXT (CN100 -> G16) | 0.1 mm top trace, Z0 about 61-75 ohm (port at the SMA pin, line into the absorber); clean via transition into the BGA (port mid-line sees ~33 ohm = Z0/2, flat to 2 GHz) | None: 42 mm at clock edges of ~1 ns, reflection coefficient ~0.15 against a 50 ohm source |
+| Buck input loop (U211, VIN -> C226 -> GND) | 1.0 nH including the port gap (0.94-1.03 nH, 100-500 MHz) | None (good for this package; C226 is 1.5 mm from the pins) |
+| Stackup in the board file | Was the 4-layer Altium one (no In3/In4, 1.45 mm) | Replaced with JLC06161H-2116 |
+| FPGA decoupling | 0.47 uF 1V0 caps 0.4-0.9 mm from their balls (under the BGA); 1V8 caps 7.6-9 mm and 1V0 4.7 uF 6.6-8.4 mm away, fed by the In3 islands | Acceptable at plane level; no PDN impedance simulation was run |

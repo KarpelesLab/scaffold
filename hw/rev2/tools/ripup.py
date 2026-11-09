@@ -14,7 +14,7 @@ import sys
 import pcbnew
 
 BOARD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "kicad", "Scaffold.kicad_pcb")
-PROTECTED = ("rev2_fanout", "rev2_stitch", "rev2_buck", "rev2_manual")
+PROTECTED = ("rev2_fanout", "rev2_stitch", "rev2_buck", "rev2_manual", "rev2_thermal", "rev2_power")
 T = pcbnew.ToMM
 
 STITCH = "--stitch" in sys.argv     # also remove plane vias (re-add with stitch.py --incremental)

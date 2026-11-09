@@ -1,0 +1,102 @@
+== VBUS_C  (grid 0.050 mm, 33685 nodes, source J200.A4 J200.A9 J200.B4 J200.B9)
+   load U210   3.00 A: drop   34.1 mV (worst pad cell   34.7 mV)
+   F    max  4.33 A/mm at (72.0, 38.2), near J200.A4
+   B    max  8.44 A/mm at (65.0, 47.6), near D207.1
+   max barrel current 1.90 A (via 0.30 mm drill at 68.0, 38.5)
+   dissipation 102 mW
+== VEXT  (grid 0.050 mm, 40255 nodes, source CN202.1)
+   load U210   4.00 A: drop  122.9 mV (worst pad cell  123.8 mV)
+   F    max 15.40 A/mm at (67.9, 52.7), near U210.7
+   B    max 13.37 A/mm at (95.1, 34.2), near CN202.1
+   max barrel current 4.00 A (via 0.40 mm drill at 79.0, 53.5)
+   dissipation 492 mW
+== VIN_MUX  (grid 0.050 mm, 20818 nodes, source U210.1 U210.8)
+   load S200   4.00 A: drop   55.1 mV (worst pad cell   55.8 mV)
+   F    max 11.09 A/mm at (65.0, 49.6), near U210.1
+   B    max  7.68 A/mm at (77.9, 48.5), near R221.2
+   max barrel current 3.24 A (hole 1.12 mm drill at 88.0, 47.9)
+   dissipation 220 mW
+== VIN  (grid 0.050 mm, 967090 nodes, source S200.2)
+   load U211   1.90 A: drop   10.4 mV (worst pad cell   10.7 mV)
+   load U213   0.25 A: drop   40.0 mV (worst pad cell   40.0 mV)
+   load U214   0.10 A: drop    5.6 mV (worst pad cell    5.6 mV)
+   load U215   0.30 A: drop    6.1 mV (worst pad cell    6.1 mV)
+   F    max  5.76 A/mm at (60.7, 65.7), near C226.1
+   In2  max  0.97 A/mm at (107.0, 75.6), near Q201.2
+   In3  max  2.85 A/mm at (86.7, 50.6), near S200.2
+   max barrel current 0.80 A (via 0.20 mm drill at 60.1, 65.9)
+   dissipation 32 mW
+== VPRE  (grid 0.050 mm, 1038323 nodes, source L201.2)
+   load U200   1.50 A: drop   13.9 mV (worst pad cell   14.5 mV)
+   load U202   1.50 A: drop   14.3 mV (worst pad cell   14.9 mV)
+   load U205   0.30 A: drop   11.0 mV (worst pad cell   11.1 mV)
+   load U212   0.20 A: drop    9.6 mV (worst pad cell    9.7 mV)
+   F    max  2.24 A/mm at (96.7, 50.0), near U200.2
+   In3  max  1.02 A/mm at (93.0, 72.0), near C604.1
+   max barrel current 1.25 A (via 0.30 mm drill at 79.6, 66.4)
+   dissipation 47 mW
+== /U_Power/PLAT_LDO_OUT  (grid 0.050 mm, 20302 nodes, source U200.4)
+   load CN201  1.50 A: drop   15.9 mV (worst pad cell   16.1 mV)
+   F    max  5.59 A/mm at (100.1, 48.4), near U200.4
+   max barrel current 1.24 A (hole 1.00 mm drill at 109.1, 51.9)
+   dissipation 24 mW
+== /U_Power/DUT_LDO_OUT  (grid 0.050 mm, 18643 nodes, source U202.4)
+   load CN206  1.50 A: drop   17.5 mV (worst pad cell   17.8 mV)
+   F    max  5.58 A/mm at (116.1, 51.8), near C209.2
+   max barrel current 1.25 A (hole 1.00 mm drill at 124.6, 51.8)
+   dissipation 26 mW
+== VCC_PLATFORM_PERMANENT  (grid 0.050 mm, 84348 nodes, source CN201.2)
+   load Q200   1.50 A: drop    8.0 mV (worst pad cell    8.2 mV)
+   F    max  7.36 A/mm at (110.3, 58.0), near C202.2
+   B    max  2.06 A/mm at (110.1, 51.3), near CN201.3
+   max barrel current 0.78 A (via 0.40 mm drill at 110.8, 53.4)
+   dissipation 12 mW
+== VCC_DUT_PERMANENT  (grid 0.050 mm, 85216 nodes, source CN206.2)
+   load Q203   1.50 A: drop    7.5 mV (worst pad cell    7.7 mV)
+   F    max  6.88 A/mm at (128.3, 56.7), near C210.2
+   max barrel current 0.00 A (via 0.40 mm drill at 128.9, 58.2)
+   dissipation 11 mW
+== VCC_PLATFORM  (grid 0.050 mm, 74762 nodes, source Q201.1 Q201.2 Q201.5 Q201.6)
+   load J500   1.50 A: drop   46.5 mV (worst pad cell   46.8 mV)
+   F    max  5.75 A/mm at (106.5, 73.2), near Q201.2
+   B    max  1.94 A/mm at (127.3, 74.8), near Q204.2
+   max barrel current 1.50 A (via 0.40 mm drill at 107.1, 73.9)
+   dissipation 70 mW
+== VCC_DUT  (grid 0.050 mm, 83191 nodes, source Q204.1 Q204.2 Q204.5 Q204.6)
+   load J503   1.50 A: drop   56.7 mV (worst pad cell   56.9 mV)
+   F    max  4.72 A/mm at (124.7, 71.9), near Q204.2
+   max barrel current 1.23 A (hole 1.00 mm drill at 219.6, 117.8)
+   dissipation 85 mW
+== 1V0  (grid 0.050 mm, 196319 nodes, source L202.2)
+   load U100   2.00 A: drop   24.0 mV (worst pad cell   25.1 mV)
+   F    max  1.60 A/mm at (130.7, 104.4), near C236.1
+   In3  max  5.95 A/mm at (111.8, 111.9), near U100.N3
+   max barrel current 0.55 A (via 0.20 mm drill at 131.2, 105.2)
+   dissipation 48 mW
+== 1V8  (grid 0.100 mm, 15157 nodes, source L203.2)
+   load U100   0.30 A: drop   23.8 mV (worst pad cell   24.5 mV)
+   F    max  1.12 A/mm at (86.5, 82.6), near U215.3
+   In2  max  0.76 A/mm at (96.4, 100.6), near C118.1
+   In3  max  0.90 A/mm at (103.5, 112.2), near C117.1
+   B    max  1.10 A/mm at (96.3, 93.0), near TP209.1
+   max barrel current 0.30 A (via 0.30 mm drill at 96.5, 101.2)
+   dissipation 7 mW
+== 3V3_FPGA  (grid 0.100 mm, 2055448 nodes, source L204.2)
+   load U100   0.30 A: drop    1.9 mV (worst pad cell    2.4 mV)
+   load U105   0.03 A: drop    1.1 mV (worst pad cell    1.1 mV)
+   load U400   0.05 A: drop    1.7 mV (worst pad cell    1.7 mV)
+   load U401   0.05 A: drop    1.7 mV (worst pad cell    1.7 mV)
+   load U402   0.05 A: drop    1.8 mV (worst pad cell    1.8 mV)
+   F    max  0.29 A/mm at (81.9, 75.3), near C246.1
+   In2  max  0.01 A/mm at (113.4, 126.1), near C400.1
+   In3  max  0.27 A/mm at (97.9, 108.0), near U100.V18
+   B    max  0.22 A/mm at (101.4, 108.0), near U100.U15
+   max barrel current 0.19 A (via 0.20 mm drill at 84.1, 76.8)
+   dissipation 1 mW
+== VCC_IO_FPGA  (grid 0.100 mm, 122916 nodes, source U205.4)
+   load U100   0.30 A: drop    7.2 mV (worst pad cell    8.1 mV)
+   F    max  1.10 A/mm at (120.9, 86.7), near C218.2
+   In2  max  0.48 A/mm at (110.8, 112.2), near U100.N3
+   In3  max  0.65 A/mm at (134.0, 95.8), near C234.1
+   max barrel current 0.30 A (hole 1.10 mm drill at 124.6, 87.2)
+   dissipation 2 mW
